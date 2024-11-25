@@ -1,0 +1,129 @@
+name: dockercompose11864217466673527743
+services:
+  urlshortener:
+    build:
+      context: C:\Users\vllah\OneDrive\Dokumente\URLShortener-master\URLShortener-master\BackEnd
+      dockerfile: URLShortener/Dockerfile
+      args:
+        BUILD_CONFIGURATION: Debug
+        LAUNCHING_FROM_VS: "true"
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: URLShortener
+      target: base
+    container_name: urlshortener
+    depends_on:
+      urlshortener.database:
+        condition: service_started
+        required: true
+    entrypoint:
+      - dotnet
+      - --roll-forward
+      - Major
+      - /VSTools/DistrolessHelper/DistrolessHelper.dll
+      - --wait
+    environment:
+      ASPNETCORE_HTTP_PORTS: "5000"
+      ASPNETCORE_HTTPS_PORTS: "5001"
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      DOTNET_USE_POLLING_FILE_WATCHER: "1"
+      NUGET_FALLBACK_PACKAGES: ""
+      POSTGRES_DB: URLShortener
+      POSTGRES_HOST: urlshortener.database
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+    image: urlshortener:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /.nuget/packages  "/app/bin/Debug/net7.0/URLShortener.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    networks:
+      urlshort: null
+    ports:
+      - mode: ingress
+        target: 80
+        published: "5001"
+        protocol: tcp
+    tty: true
+    volumes:
+      - type: bind
+        source: C:\Users\vllah\AppData\Roaming\Microsoft\UserSecrets
+        target: /root/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\vllah\AppData\Roaming\ASP.NET\Https
+        target: /root/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\vllah\OneDrive\Dokumente\URLShortener-master\URLShortener-master\BackEnd\URLShortener
+        target: /app
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\vllah\OneDrive\Dokumente\URLShortener-master\URLShortener-master\BackEnd
+        target: /src
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\vllah\vsdbg\vs2017u5
+        target: /remote_debugger
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\vllah\.nuget\packages
+        target: /.nuget/packages
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\vllah\AppData\Roaming\ASP.NET\Https
+        target: /home/app/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\vllah\AppData\Roaming\Microsoft\UserSecrets
+        target: /home/app/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net7.0
+        target: /VSTools
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\HotReload
+        target: /HotReloadAgent
+        read_only: true
+        bind:
+          create_host_path: true
+  urlshortener.database:
+    container_name: urlshortener.database
+    environment:
+      POSTGRES_DB: URLShortener
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+    image: postgres:latest
+    networks:
+      urlshort: null
+    ports:
+      - mode: ingress
+        target: 5432
+        published: "5002"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: C:\Users\vllah\OneDrive\Dokumente\URLShortener-master\URLShortener-master\BackEnd\.containers\urlshortener-db
+        target: /var/lib/postgresql/data
+        bind:
+          create_host_path: true
+networks:
+  urlshort:
+    name: dockercompose11864217466673527743_urlshort
