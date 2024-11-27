@@ -4,53 +4,53 @@ $error = '';
 $success = '';
 
 echo "<script>
-    // Check if the token exists in localStorage
+   
     if (localStorage.getItem('authToken')) {
-        // Redirect to a different page (e.g., dashboard)
-        window.location.href = 'dashboard.php'; // Replace with your target URL
+        
+        window.location.href = 'dashboard.php';
     }
 </script>";
 
-// Handle form submission
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? '';
-    $fullName = $_POST['fullName'] ?? ''; // Get the full name from the form
+    $fullName = $_POST['fullName'] ?? '';
 
-    // API endpoint for registration
+
     $url = "http://34.76.194.134:5284/api/User/signup";
 
-    // Prepare data for POST request
+
     $data = json_encode(array(
         "email" => $email,
         "fullName" => $fullName,
         "password" => $password
     ));
 
-    // Initialize cURL
+
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 
-    // Execute cURL request and capture the response
+
     $response = curl_exec($ch);
     $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
 
-    // Log the response for debugging
+
     echo "<script>console.log('HTTP Code: {$http_code}');</script>";
     echo "<script>console.log('Response: " . addslashes($response) . "');</script>";
 
     if ($http_code == 200) {
-        // Registration successful
+
         $success = 'Registration successful! You can now log in.';
         echo "<script>console.log('Registration successful!');</script>";
-        // Optionally redirect to login page
+
         exit;
     } else {
-        // Registration failed
+
         $error = 'There was an error with the registration process. Please try again.';
         echo "<script>console.log('Error: {$error}');</script>";
     }

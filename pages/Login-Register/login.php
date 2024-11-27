@@ -4,41 +4,41 @@ $error = '';
 $success = '';
 
 echo "<script>
-    // Check if the token exists in localStorage
+   
     if (localStorage.getItem('authToken')) {
-        // Redirect to a different page (e.g., dashboard)
-        window.location.href = 'dashboard.php'; // Replace with your target URL
+        
+        window.location.href = 'dashboard.php'; 
     }
 </script>";
 
 
-// Handle form submission
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? ''; // Get the full name from the form
 
-    // API endpoint for registration
+
     $url = "http://34.76.194.134:5284/api/User/login";
 
-    // Prepare data for POST request
+
     $data = json_encode(array(
         "email" => $email,
         "password" => $password
     ));
 
-    // Initialize cURL
+
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 
-    // Execute cURL request and capture the response
+
     $response = curl_exec($ch);
     $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
 
-    // Log the response for debugging
+
     echo "<script>console.log('HTTP Code: {$http_code}');</script>";
     echo "<script>console.log('Response: " . addslashes($response) . "');</script>";
 
@@ -49,14 +49,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     if ($http_code == 200) {
-        // Registration successful
+
         $success = 'Login succsesful!';
         echo "<script>console.log('Login Succsesful!');</script>";
 
-        // Optionally redirect to login page
+
         exit;
     } else {
-        // Registration failed
+
         $error = 'There was an error with the login process. Please try again.';
         echo "<script>console.log('Error: {$error}');</script>";
     }

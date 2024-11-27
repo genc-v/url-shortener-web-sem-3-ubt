@@ -9,6 +9,7 @@
   font-style: normal;
   margin: 0;
   object-fit: border-box;
+  font-size: 62.5%;
 }
 .poppins-thin {
   font-family: "Poppins", serif;
@@ -65,13 +66,13 @@
 }
 
 h1 {
-  font-size: 2.25rem;
+  font-size: 3.6rem;
   font-weight: 700;
   opacity: 0.9;
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 3.2rem;
   font-weight: 700;
   opacity: 0.9;
 }
@@ -84,6 +85,7 @@ button {
   border: none;
   font-weight: 500;
   color: white;
+  font-size: 1.6rem;
 }
 
 input {
@@ -94,6 +96,7 @@ input {
   border: 1px solid rgb(205, 205, 205);
   padding-left: 5px;
   width: 192px;
+  font-size: 1.6rem;
 }
 
 input:-webkit-autofill {
@@ -106,13 +109,15 @@ input:-webkit-autofill {
 a {
   text-decoration: none;
   color: var(--blue);
+  font-size: 1.6rem;
 }
 
 label {
   font-weight: 500;
   opacity: 0.8;
+  font-size: 2.2rem;
 }
 
 p {
-  font-size: 1rem;
+  font-size: 1.6rem;
 }

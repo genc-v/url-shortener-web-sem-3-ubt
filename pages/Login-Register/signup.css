@@ -15,7 +15,7 @@ h1 {
 }
 p {
   margin-top: -5px;
-  font-size: 0.9rem;
+  font-size: 1.44rem;
 }
 
 .form-group {
@@ -52,7 +52,7 @@ button {
   margin-top: 20px;
   width: 90%;
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1.75rem;
   opacity: 0.7;
   text-align: center;
 }
