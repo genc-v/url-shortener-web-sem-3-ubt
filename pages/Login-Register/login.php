@@ -42,16 +42,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo "<script>console.log('HTTP Code: {$http_code}');</script>";
     echo "<script>console.log('Response: " . addslashes($response) . "');</script>";
 
-    echo "<script>
-    localStorage.setItem('authToken', '$response');
-    </script>";
-
 
 
     if ($http_code == 200) {
 
         $success = 'Login succsesful!';
         echo "<script>console.log('Login Succsesful!');</script>";
+
+        echo "<script>
+    localStorage.setItem('authToken', '$response');
+    </script>";
 
 
         exit;

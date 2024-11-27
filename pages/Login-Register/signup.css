@@ -58,8 +58,10 @@ button {
 }
 
 .message {
-  margin-top: -10px;
+  transform: translateY(-30px);
   color: red;
+  opacity: 0.5;
+  font-size: 1rem;
 }
 
 @media (max-width: 736px) {
