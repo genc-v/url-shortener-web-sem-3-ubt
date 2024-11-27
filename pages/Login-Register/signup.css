@@ -1,0 +1,73 @@
+@import url(../../assets/styles/main.css);
+body {
+  display: flex;
+}
+
+.register {
+  width: 60%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+h1 {
+  margin-bottom: -20px;
+}
+p {
+  margin-top: -5px;
+  font-size: 0.9rem;
+}
+
+.form-group {
+  margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  width: 400px;
+}
+
+button {
+  width: 410px;
+  border: 1px solid var(--blue);
+}
+
+.secondary-container {
+  width: 40%;
+  height: 100vh;
+  background-color: rgba(14, 144, 195, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.secondary-container > img {
+  width: 40vw;
+  background: transparent;
+}
+
+.secondary-container > p {
+  margin-top: 20px;
+  width: 90%;
+  font-weight: 700;
+  font-size: 1.1rem;
+  opacity: 0.7;
+  text-align: center;
+}
+
+.message {
+  margin-top: -10px;
+  color: red;
+}
+
+@media (max-width: 736px) {
+  .register {
+    width: 100%;
+    scale: 0.8;
+  }
+  .secondary-container {
+    display: none;
+  }
+}
