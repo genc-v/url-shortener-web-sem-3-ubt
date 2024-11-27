@@ -3,6 +3,15 @@ session_start();
 $error = '';
 $success = '';
 
+echo "<script>
+    // Check if the token exists in localStorage
+    if (localStorage.getItem('authToken')) {
+        // Redirect to a different page (e.g., dashboard)
+        window.location.href = 'dashboard.php'; // Replace with your target URL
+    }
+</script>";
+
+
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'] ?? '';
@@ -33,19 +42,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo "<script>console.log('HTTP Code: {$http_code}');</script>";
     echo "<script>console.log('Response: " . addslashes($response) . "');</script>";
 
+    echo "<script>
+    localStorage.setItem('authToken', '$response');
+    </script>";
+
+
+
     if ($http_code == 200) {
         // Registration successful
         $success = 'Login succsesful!';
         echo "<script>console.log('Login Succsesful!');</script>";
 
-        $response_data = json_decode($response, true);
-        if (isset($response_data['token'])) {
-            // Pass the token to JavaScript for localStorage
-            echo "<script>localStorage.setItem('auth_token', '" . addslashes($response_data['token']) . "');</script>";
-        }
-
         // Optionally redirect to login page
-
         exit;
     } else {
         // Registration failed

@@ -3,6 +3,14 @@ session_start();
 $error = '';
 $success = '';
 
+echo "<script>
+    // Check if the token exists in localStorage
+    if (localStorage.getItem('authToken')) {
+        // Redirect to a different page (e.g., dashboard)
+        window.location.href = 'dashboard.php'; // Replace with your target URL
+    }
+</script>";
+
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'] ?? '';
