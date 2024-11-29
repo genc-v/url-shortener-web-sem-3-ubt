@@ -3,6 +3,14 @@ session_start();
 $error = '';
 $success = '';
 
+echo "<script>
+   
+    if (localStorage.getItem('authToken')) {
+        
+        window.location.href = 'dashboard.php'; 
+    }
+</script>";
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? '';
