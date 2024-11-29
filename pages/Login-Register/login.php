@@ -50,8 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "<script>console.log('Login Succsesful!');</script>";
 
         echo "<script>
-    localStorage.setItem('authToken', '$response');
-    </script>";
+        window.location.href = 'dashboard.php'; 
+        localStorage.setItem('authToken', '$response');
+        </script>";
 
 
         exit;
