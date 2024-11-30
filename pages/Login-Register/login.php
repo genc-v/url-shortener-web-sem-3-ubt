@@ -49,11 +49,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $success = 'Login succsesful!';
         echo "<script>console.log('Login Succsesful!');</script>";
 
-        echo "<script>
-    localStorage.setItem('authToken', '$response');
-    </script>";
-
-
+        echo "
+        <script>
+            localStorage.setItem('authToken', '$response');
+            window.location.href = 'dashboard.php';
+        </script>";
         exit;
     } else {
 
@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <p class="pt-6">Dont have an account? <a href="register.php" class="">Sign Up here!</a></p>
             <div class="form-group">
                 <label><b>Email</b></label>
-                <input type="email" name="email" placeholder="Email address" required>
+                <input type="text" name="email" placeholder="Email address" required>
             </div>
             <div class="form-group">
                 <label><b>Password</b></label>
@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
     <div class="secondary-container">
         <img src="../../assets/images/png/loginImage.png" alt="">
-        <p>Power your links, QR Codes, and landing pages with Bitly's Connections Platform.</p>
+        <p>Power your links, QR Codes, and landing pages with Bytely's Connections Platform.</p>
     </div>
 </body>
 
