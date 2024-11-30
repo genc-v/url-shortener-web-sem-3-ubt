@@ -23,7 +23,12 @@
 
     <div class="content-container">
         <div class="content">
-            <h1>lasdasd</h1>
+            <div class="hero">
+                <h3 class="slogan">Great Connections Start with a click OR SCAN</h3>
+                <h1>Bytely</h1>
+            </div>
+
+
         </div>
     </div>
 

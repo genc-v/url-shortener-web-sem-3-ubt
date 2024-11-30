@@ -1,4 +1,7 @@
 @import url(../../assets/styles/main.css);
+* {
+  border: 1px solid red;
+}
 
 .content-container {
   margin-top: 50px;
@@ -8,4 +11,11 @@
 }
 .content {
   width: 80%;
+}
+.hero {
+}
+.hero > h1,
+h3 {
+  width: 100%;
+  text-align: center;
 }

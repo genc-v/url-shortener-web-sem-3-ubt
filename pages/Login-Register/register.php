@@ -46,7 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($http_code == 200) {
 
         $success = 'Registration successful! You can now log in.';
-        echo "<script>console.log('Registration successful!');</script>";
+        echo "<script>console.log('Registration successful!');
+         window.location.href = 'login.php';
+         </script>";
 
         exit;
     } else {
