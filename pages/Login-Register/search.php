@@ -53,7 +53,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['urlName'], $_POST['au
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search</title>
-    <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="search.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nokora:wght@100;300;400;700;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <script>
         // Ensure authToken is in localStorage
         if (!localStorage.getItem('authToken')) {
@@ -71,14 +76,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['urlName'], $_POST['au
 </head>
 
 <body>
-    <nav class="navbar">
+    <!-- <nav class="navbar">
         <h1>Website Name</h1>
         <ul>
             <li><a href="register.php">Register</a></li>
             <li><a href="dashboard.php">Dashboard</a></li>
             <li><a href="logout.php">Logout</a></li>
         </ul>
-    </nav>
+    </nav> -->
     <div class="search">
         <form class="search-form" method="POST">
             <h2>Search</h2>
@@ -91,12 +96,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['urlName'], $_POST['au
         </form>
 
         <?php if ($error): ?>
-            <div class="error"><?php echo htmlspecialchars($error); ?></div>
+            <div class="message"><h3><?php echo htmlspecialchars($error); ?></h3></div>
         <?php endif; ?>
 
         <?php if (!empty($results)): ?>
             <div class="results">
-                <h3>Search Results</h3>
+                <h2>Search Results</h2>
                 <ul>
                     <?php foreach ($results as $result): ?>
                         <li>
@@ -109,6 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['urlName'], $_POST['au
             </div>
         <?php endif; ?>
     </div>
+
 </body>
 
 </html>
