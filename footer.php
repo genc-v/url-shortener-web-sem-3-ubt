@@ -13,9 +13,9 @@ function renderFooter()
             </div>
 
             <div class="linkContainer">
-                <a class="footerLink" href="">Home</a>
-                <a class="footerLink" href="">Search</a>
-                <a class="footerLink" href="">Urls</a>
+                <a class="footerLink" href="index.php">Home</a>
+                <a class="footerLink" href="search.php">Search</a>
+                <a class="footerLink" href="url.php">Urls</a>
             </div>
 
             <div class="icon-container">
