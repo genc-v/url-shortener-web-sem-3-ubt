@@ -75,7 +75,8 @@ function renderFooter()
         }
 
         .footer-top {
-            width: 80%;
+            width: 100%;
+            max-width: 1440px;
             display: flex;
             justify-content: space-between;
             align-items: center;

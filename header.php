@@ -9,13 +9,13 @@ function renderNavbar()
     <div class="overlay" onclick="menuToggle()" id="overlay"></div>
     <div class="navbar-container">
         <div class="navbar">
-            <div class="navbar-left">
+            <a href="index.php" class="navbar-left">
                 <img src="assets/images/png/logo.png" class="logo" alt="">
-            </div>
+            </a>
             <div class="navbar-center" id="navbar-center">
                 <a class="link" href="index.php">Home</a>
                 <a class="link" href="search.php">Search</a>
-                <a class="link" href="urls.php">Urls</a>
+                <a class="link" href="dashbaord.php">Dashbaord</a>
 
             </div>
 
@@ -53,11 +53,11 @@ function renderNavbar()
 
         function logOut() {
             localStorage.removeItem('authToken');
-            window.location.href = '../Login-Register/login.php';
+            window.location.href = 'login.php';
         }
 
         function logIn() {
-            window.location.href = "../Login-Register/login.php"
+            window.location.href = "login.php"
         }
 
         function menuToggle() {
@@ -100,7 +100,8 @@ function renderNavbar()
 
         .navbar {
             overflow: hidden;
-            width: 80%;
+            width: 100%;
+            max-width: 1440px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -164,7 +165,7 @@ function renderNavbar()
                 scale: 0.8;
                 position: fixed;
                 right: -50vw;
-                top: 250px;
+                top: 232.5px;
                 transition: 0.5s;
                 z-index: 3;
             }
@@ -172,6 +173,7 @@ function renderNavbar()
             .logButton {
                 border: none;
                 color: white;
+                width: 120px;
                 font-size: 2.75rem;
                 font-weight: 600;
             }

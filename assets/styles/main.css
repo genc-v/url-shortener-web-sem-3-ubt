@@ -27,9 +27,7 @@ html {
   font-style: normal;
   margin: 0;
   object-fit: border-box;
-}
-body {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 .poppins-thin {
   font-family: "Poppins", serif;

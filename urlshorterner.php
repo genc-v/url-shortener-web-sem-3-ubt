@@ -92,7 +92,7 @@
 <body>
 
   <?php 
-  include "../pages/Header-Footer/header.php";
+  include "./header.php";
   renderNavbar()
   ?>
 
@@ -108,7 +108,7 @@
     </div>
 
   <?php 
-  include "../pages/Header-Footer/footer.php";
+  include "./footer.php";
   renderFooter()
   ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>

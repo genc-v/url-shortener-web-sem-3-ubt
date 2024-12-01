@@ -1,4 +1,4 @@
-@import url(../assets/styles/main.css);
+@import url(assets/styles/main.css);
 
 
 .urlList-container {
@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap:2.5rem
+  gap:2.5rem;
 }
 
 h2 {
@@ -33,28 +33,18 @@ table {
   width: 100%;
   max-width: 1440px;
   border-collapse: collapse;
-  font-size: 1rem;
+  font-size: 5rem;
 }
 
 table * {
   transition: .2s;
+  font-size: 2rem;
 }
 
 .url-list__title {
-  font-size: 3rem;
+  font-size: 5rem;
 }
 
-.dashbaord-actoins {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.dashbaord-actoins button {
-  font-size: .7rem;
-  width: auto;
-  height: auto;
-}
 
 th,
 td {
@@ -108,14 +98,13 @@ tr:hover {
   display: block;
 }
 
-button {
+table button {
   background-color: gray;
   color: white;
   border: none;
   border-radius: 4px;
   padding: 10px 15px;
   cursor: pointer;
-  font-size: 1em;
 }
 
 .original-url {
@@ -140,12 +129,21 @@ td img {
   padding: 10px;
 }
 
+.dashbaord-actoins {
+  display: flex;
+  gap: 15px;
+}
+
+svg {
+  width: 20px;
+}
+
 .qr-code {
   margin: 20px 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: .5rem;
+  /* font-size: .5rem; */
   text-align: center;
 }
 
@@ -155,6 +153,10 @@ td img {
   justify-content: center;
   flex-direction: column;
   gap:10px
+}
+svg {
+  /* height: 20px; */
+  cursor: pointer;
 }
 .cta__buttons  button{
   height: 100% !important;
@@ -232,7 +234,7 @@ a:hover {
 
 .modal input {
   margin-bottom: 10px;
-  font-size: 1em;
+  /* font-size: 1em; */
 }
 .modal-overlay {
   position: fixed;
@@ -245,7 +247,7 @@ a:hover {
   z-index: 1000;
 }
 .modal h3 {
-  font-size: 1rem;
+  /* font-size: 1rem; */
   margin-bottom: 10px;
 }
 #confirm-delete {
@@ -264,9 +266,7 @@ th.sorted-desc::after {
   content: " ↓";
 }
 
-  label {
-    font-size: 1rem;
-  }
+
   select {
     border-radius: 5px;
     text-align: center;
@@ -280,6 +280,14 @@ th.sorted-desc::after {
     display: none;
   }
 
+  .dashbaord-actoins {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px;
+    width: 100%;
+    height: 100%;
+  }
   table {
     display: block;
     width: 100%;
@@ -319,18 +327,6 @@ th.sorted-desc::after {
     margin-right: 10px;
   }
 
-  .dashbaord-actoins {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding-top: 10px;
-  }
-
-  .dashbaord-actoins button {
-    font-size: .8rem;
-    width: 100%;
-  }
-
   .cta__buttons {
     display: flex;
     flex-direction: column;
@@ -351,7 +347,7 @@ th.sorted-desc::after {
     margin-bottom: 20px;
   }
   label {
-    font-size: 1rem;
+    /* font-size: 1rem; */
   }
   select {
     border-radius: 5px;
