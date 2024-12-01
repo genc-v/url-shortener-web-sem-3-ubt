@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </form>
     </div>
     <div class="secondary-container">
-        <img src="../../assets/images/png/loginImage.png" alt="">
+        <img src="assets/images/png/loginImage.png" alt="">
         <p>Power your links, QR Codes, and landing pages with Bitly's Connections Platform.</p>
     </div>
 </body>

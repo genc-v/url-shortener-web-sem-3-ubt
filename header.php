@@ -10,7 +10,7 @@ function renderNavbar()
     <div class="navbar-container">
         <div class="navbar">
             <div class="navbar-left">
-                <img src="../../assets/images/png/logo.png" class="logo" alt="">
+                <img src="assets/images/png/logo.png" class="logo" alt="">
             </div>
             <div class="navbar-center" id="navbar-center">
                 <a class="link" href="index.php">Home</a>

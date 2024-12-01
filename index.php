@@ -16,7 +16,7 @@
 
 <body>
     <?php
-    include '../Header-Footer/header.php';
+    include 'header.php';
 
     renderNavbar();
 
@@ -38,7 +38,7 @@
                     </div>
                 </div>
 
-                <div class="hero-image"><img src="../../assets\images\png\dashboard-image.png" alt=""></div>
+                <div class="hero-image"><img src="assets\images\png\dashboard-image.png" alt=""></div>
             </div>
 
             <div class="features">
@@ -169,7 +169,7 @@
     </div>
 
     <?php
-    include '../Header-Footer/footer.php';
+    include 'footer.php';
 
     renderFooter();
     ?>
@@ -186,7 +186,7 @@
         }
 
         function redirect() {
-            window.location.href = "login.php"
+            window.location.href = "url.php"
         }
         function logIn() {
             window.location.href = "login.php"
