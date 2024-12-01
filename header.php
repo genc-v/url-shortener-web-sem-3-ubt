@@ -13,10 +13,9 @@ function renderNavbar()
                 <img src="../../assets/images/png/logo.png" class="logo" alt="">
             </div>
             <div class="navbar-center" id="navbar-center">
-                <a class="link" href="">Home</a>
-                <a class="link" href="">About Us</a>
-                <a class="link" href="">Search</a>
-                <a class="link" href="">Urls</a>
+                <a class="link" href="index.php">Home</a>
+                <a class="link" href="search.php">Search</a>
+                <a class="link" href="urls.php">Urls</a>
 
             </div>
 

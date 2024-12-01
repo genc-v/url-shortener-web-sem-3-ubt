@@ -115,7 +115,7 @@
                                     </svg> QR CODES</h3>
                                 <p class="card-paragraph">QR Code solutions for every customer, business and brand
                                     experience.</p>
-                                <a href="urls.php"><button class="buttonClear button">Try it out</button></a>
+                                <a href="url.php"><button class="buttonClear button">Try it out</button></a>
                             </div>
 
                         </div>
@@ -155,7 +155,7 @@
                                     </svg> Clicker Counter</h3>
                                 <p class="card-paragraph">Track your traffic, for a seamless user experience and testing
                                     ,use statistics and metricts for development</p>
-                                <a href="urls.php"><button class="buttonClear button">Try it out</button></a>
+                                <a href="url.php"><button class="buttonClear button">Try it out</button></a>
                             </div>
                         </div>
                     </div>
@@ -179,17 +179,17 @@
 
         if (authToken) {
             // If authToken exists, render 'Log Out' button
-            heroButtonContainer.innerHTML = '<a href="../dashboard/dashboard.php"><button>Get started for free</button></a>';
+            heroButtonContainer.innerHTML = '<a href="index.php"><button>Get started for free</button></a>';
         } else {
             // If no authToken exists, render 'Log In' button
-            heroButtonContainer.innerHTML = ' <a href="../Login-Register/register.php"><button class="buttonClear">Sign up for more</button ></a > ';
+            heroButtonContainer.innerHTML = ' <a href="register.php"><button class="buttonClear">Sign up for more</button ></a > ';
         }
 
         function redirect() {
-            window.location.href = "../Login-Register/login.php"
+            window.location.href = "login.php"
         }
         function logIn() {
-            window.location.href = "../Login-Register/login.php"
+            window.location.href = "login.php"
         }
     </script>
 

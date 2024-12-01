@@ -6,8 +6,7 @@ $success = '';
 echo "<script>
    
     if (localStorage.getItem('authToken')) {
-        
-        window.location.href = '../dashboard/dashboard.php'; 
+        window.location.href = 'index.php'; 
     }
 </script>";
 
@@ -50,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "<script>console.log('Login Succsesful!');</script>";
 
         echo "<script>
-        window.location.href = '../dashboard/dashboard.php'; 
+        window.location.href = 'index.php'; 
         localStorage.setItem('authToken', '$response');
         </script>";
 

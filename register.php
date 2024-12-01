@@ -7,7 +7,7 @@ echo "<script>
    
     if (localStorage.getItem('authToken')) {
         
-        window.location.href = '../dashboard/dashboard.php';
+        window.location.href = 'dashboard.php';
     }
 </script>";
 
