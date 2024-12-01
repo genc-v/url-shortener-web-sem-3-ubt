@@ -14,13 +14,13 @@
   </head>
   <script>
     const redirectToValidUrl = async () => {
-      let url = window.location.href; 
-      let path = new URL(url).pathname; 
-      let urlParts = path.split('/'); 
-      let urlShort = urlParts[urlParts.length - 1]; 
+      let url = window.location.href;
+      let path = new URL(url).pathname;
+      let urlParts = path.split("/");
+      let urlShort = urlParts[urlParts.length - 1];
 
-      if (urlShort === '' || urlShort === '/') {
-        window.location.href = 'index.php';
+      if (urlShort === "" || urlShort === "/") {
+        window.location.href = "index.php";
         return;
       }
 
@@ -28,15 +28,14 @@
         const response = await fetch(`http://34.76.194.134:5284/${urlShort}`);
 
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
 
         const text = await response.text();
-        window.location.href = text; 
+        window.location.href = text;
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
 
-        
         document.body.innerHTML = `
           <img src="assets/images/png/404.jpg" alt="404 Error" />
           <h1>Page Not Found</h1>

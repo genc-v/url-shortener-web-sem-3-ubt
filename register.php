@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         </form>
     </div>
-    <div class="secondary-container"><img src="../../assets/images/png/RegisterImage.png" alt="">
+    <div class="secondary-container"><img src="assets/images/png/RegisterImage.png" alt="">
         <p>Analyze your links and QR Codes as easily as creating them</p>
     </div>
 </body>

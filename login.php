@@ -6,8 +6,7 @@ $success = '';
 echo "<script>
    
     if (localStorage.getItem('authToken')) {
-        
-        window.location.href = '../dashboard/dashboard.php'; 
+        window.location.href = 'index.php'; 
     }
 </script>";
 
@@ -49,11 +48,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $success = 'Login succsesful!';
         echo "<script>console.log('Login Succsesful!');</script>";
 
-        echo "
-        <script>
-            localStorage.setItem('authToken', '$response');
-            window.location.href = 'dashboard.php';
+        echo "<script>
+        window.location.href = 'index.php'; 
+        localStorage.setItem('authToken', '$response');
         </script>";
+
+
         exit;
     } else {
 
@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </form>
     </div>
     <div class="secondary-container">
-        <img src="../../assets/images/png/loginImage.png" alt="">
+        <img src="assets/images/png/loginImage.png" alt="">
         <p>Power your links, QR Codes, and landing pages with Bytely's Connections Platform.</p>
     </div>
 </body>

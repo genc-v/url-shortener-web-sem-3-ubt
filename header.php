@@ -10,13 +10,12 @@ function renderNavbar()
     <div class="navbar-container">
         <div class="navbar">
             <div class="navbar-left">
-                <img src="../assets/images/png/logo.png" class="logo" alt="">
+                <img src="assets/images/png/logo.png" class="logo" alt="">
             </div>
             <div class="navbar-center" id="navbar-center">
-                <a class="link" href="">Home</a>
-                <a class="link" href="">About Us</a>
-                <a class="link" href="">Search</a>
-                <a class="link" href="">Urls</a>
+                <a class="link" href="index.php">Home</a>
+                <a class="link" href="search.php">Search</a>
+                <a class="link" href="urls.php">Urls</a>
 
             </div>
 
@@ -69,8 +68,8 @@ function renderNavbar()
                 overlay.style.display = "block";
             }
             else {
-                authButtonContainer.style.right = '-40vw';
-                dropwDownMenu.style.right = '-40vw';
+                authButtonContainer.style.right = '-50vw';
+                dropwDownMenu.style.right = '-50vw';
                 overlay.style.display = "none";
             }
         }
@@ -83,24 +82,25 @@ function renderNavbar()
             width: 200vw;
             height: 200vh;
             z-index: 2;
-            background: var(--blue);
-            opacity: 0.2;
+            background: var(--gray);
+            opacity: 0.6;
             transition: 0.5;
             transform: translate(-10vw, -10vw);
             display: none;
         }
 
         .navbar-container {
+
             margin-top: 10px;
-            max-width: 1440px;
+            max-width: 100%;
             display: flex;
             justify-content: center;
-            margin: auto;
 
         }
 
         .navbar {
-            width: 100%;
+            overflow: hidden;
+            width: 80%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -118,8 +118,9 @@ function renderNavbar()
             opacity: 0.8;
             margin: 0 20px;
             font-size: 1.75rem;
-
         }
+
+
 
         .link::before {
             content: "";
@@ -134,6 +135,10 @@ function renderNavbar()
         .link:hover {
             color: var(--blue);
             transition: 0.3s;
+        }
+
+        button:hover {
+            transform: translate(0);
         }
 
 
@@ -155,10 +160,11 @@ function renderNavbar()
         @media (max-width: 736px) {
 
             #authButtonContainer {
+                padding: 15px;
                 scale: 0.8;
                 position: fixed;
-                right: -40vw;
-                top: 195px;
+                right: -50vw;
+                top: 250px;
                 transition: 0.5s;
                 z-index: 3;
             }
@@ -166,7 +172,7 @@ function renderNavbar()
             .logButton {
                 border: none;
                 color: white;
-                font-size: 2rem;
+                font-size: 2.75rem;
                 font-weight: 600;
             }
 
@@ -185,14 +191,24 @@ function renderNavbar()
                 padding: 0;
             }
 
+            .link:hover::before {
+                width: 0;
+            }
+
+            .link:hover {
+                color: white;
+            }
+
             .navbar-center {
                 display: flex;
                 flex-direction: column;
                 position: fixed;
                 justify-content: center;
-                right: -40vw;
-                top: 75px;
-                height: 180px;
+                right: -50vw;
+                top: 95px;
+                gap: 5px;
+                height: 200px;
+                padding: 10px;
                 z-index: 3;
                 border-radius: 40px 0px 0px 40px;
                 background-color: var(--blue);
@@ -203,6 +219,7 @@ function renderNavbar()
                 color: white;
                 opacity: 1;
                 transform: translateY(-15px);
+                font-size: 2.25rem;
             }
 
 

@@ -9,13 +9,13 @@ function renderFooter()
     <footer>
         <div class="footer-top">
             <div class="logo-div">
-                <img class="logo" src="../assets/images/png/logo.png" alt="">
+                <img class="logo" src="assets/images/png/logo.png" alt="">
             </div>
 
             <div class="linkContainer">
-                <a class="footerLink" href="">Home</a>
-                <a class="footerLink" href="">Search</a>
-                <a class="footerLink" href="">Urls</a>
+                <a class="footerLink" href="index.php">Home</a>
+                <a class="footerLink" href="search.php">Search</a>
+                <a class="footerLink" href="url.php">Urls</a>
             </div>
 
             <div class="icon-container">
@@ -75,8 +75,7 @@ function renderFooter()
         }
 
         .footer-top {
-            max-width: 1440px;
-            width: 100%;
+            width: 80%;
             display: flex;
             justify-content: space-between;
             align-items: center;

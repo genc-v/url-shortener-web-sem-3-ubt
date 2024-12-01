@@ -3,6 +3,24 @@
   --gray: rgba(238, 238, 238, 0.7);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+/* WebKit Browsers */
+::-webkit-scrollbar {
+  width: 6px; /* Set the width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(255, 255, 255); /* Set the background of the track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--blue); /* Set the color of the scrollbar */
+  border-radius: 20px; /* Add some rounding to the scrollbar */
+}
+
 * {
   font-family: "Poppins", serif;
   font-weight: 400;
