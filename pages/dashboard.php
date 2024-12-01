@@ -1,85 +1,163 @@
 <?php
-session_start();
-$responseMessage = '';
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['url'], $_POST['description'])) {
-    $urlInput = $_POST['url'];
-    $description = $_POST['description'];
-
-    $apiUrl = "http://34.76.194.134:5284/api/URL";
-
-    // Get auth token from localStorage via JavaScript (sent as hidden field)
-    $authToken = $_POST['authToken'] ?? '';
-
-    if (!$authToken) {
-        $responseMessage = 'Authentication token missing!';
-    } else {
-        $data = json_encode(array(
-            "url" => $urlInput,
-            "description" => $description
-        ));
-
-        $ch = curl_init($apiUrl);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            "Content-Type: application/json",
-            "Authorization: Bearer $authToken"
-        ));
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-
-        $response = curl_exec($ch);
-        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
-
-        if ($httpCode == 200) {
-            $responseMessage = 'URL and description successfully submitted!';
-        } else {
-            $responseMessage = 'Failed to submit the data. Please try again.';
-        }
-    }
-}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submit URL and Description</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Shortener</title>
+  <style>
+    .containerUrl {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .inputUrl {
+      margin: 5px;
+      padding: 10px;
+      width: 250px;
+    }
+    .button {
+      margin: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    .urlList-container {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .table-container {
+      margin-top: 20px;
+    }
+    .url-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .url-table th, .url-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    .url-table th {
+      background-color: #f2f2f2;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Form for submitting URL and description -->
-        <form method="POST" id="urlForm">
-            <h2>Submit Your URL</h2>
-            <div>
-                <label for="url">URL:</label>
-                <input type="url" id="url" name="url" placeholder="Enter URL" required>
-            </div>
-            <div>
-                <label for="description">Description:</label>
-                <textarea id="description" name="description" placeholder="Enter description" required></textarea>
-            </div>
-            <!-- Hidden field to send auth token -->
-            <input type="hidden" id="authToken" name="authToken">
-            <button type="submit">Submit</button>
-        </form>
 
-        <?php if ($responseMessage): ?>
-            <div class="message"><?php echo $responseMessage; ?></div>
-        <?php endif; ?>
+  <!-- URL Shortener Section -->
+  <div class="containerUrl">
+    <input
+      type="text"
+      id="url-input"
+      placeholder="Enter URL"
+      class="inputUrl"
+    />
+    <input
+      type="text"
+      id="description-input"
+      placeholder="Enter Description"
+      class="inputUrl"
+    />
+    <button class="button" onclick="shortenUrl()">Shorten URL</button>
+    <button class="button" onclick="redirectToOriginalUrl()">Redirect</button>
+  </div>
+
+  <!-- URL List Section -->
+  <div class="urlList-container">
+    <h2>Your Previous Urls</h2>
+    <div class="table-container">
+      <table class="url-table">
+        <thead>
+          <tr>
+            <th>Original URL</th>
+            <th>Short Url</th>
+            <th>Date Created</th>
+          </tr>
+        </thead>
+        <tbody id="url-table-body">
+          <!-- Table rows will be inserted here -->
+        </tbody>
+      </table>
     </div>
+  </div>
 
-    <script>
-        // Attach the authentication token to the hidden input
-        const authToken = localStorage.getItem('authToken');
-        if (authToken) {
-            document.getElementById('authToken').value = authToken;
-        } else {
-            alert('Authentication token missing. Please log in.');
-            window.location.href = 'login.php';
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        
+        const token = localStorage.getItem('authToken')
+      
+      // Function to fetch user URLs
+      const fetchUrls = async () => {
+        try {
+          const response = await fetch(`http://http://34.76.194.134:5284/Urls/${token}`);
+          const data = await response.json();
+
+          const tableBody = document.getElementById('url-table-body');
+          data.urls.forEach(url => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td>${url.originalUrl}</td>
+              <td>http://http://34.76.194.134:5284/${url.shortUrl}</td>
+              <td>${url.dateCreated}</td>
+            `;
+            tableBody.appendChild(row);
+          });
+        } catch (error) {
+          console.log("Error fetching data: ", error);
         }
-    </script>
+      };
+
+      // Call the fetchUrls function when the page loads
+      fetchUrls();
+    });
+
+    // Shorten the URL
+    const shortenUrl = async () => {
+      const url = document.getElementById('url-input').value;
+      const description = document.getElementById('description-input').value;
+        const token = localStorage.getItem('authToken')
+
+      try {
+        const encodedUrl = encodeURIComponent(url);
+        const encodedDescription = encodeURIComponent(description); // Encode the description
+        const response = await fetch(
+          `http://http://34.76.194.134:5284/api/URL?url=${encodedUrl}&token=${token}&description=${encodedDescription}`,
+          { method: 'POST' }
+        );
+        const data = await response.json();
+
+        console.log('Shortened URL:', data);
+        document.getElementById('description-input').value = ""; // Clear the description after shortening
+      } catch (error) {
+        console.error("Error shortening URL:", error);
+      }
+    };
+
+    // Redirect to original URL
+    const redirectToOriginalUrl = async () => {
+      const url = document.getElementById('url-input').value;
+
+      try {
+        const encodedUrl = encodeURIComponent(url);
+        const response = await fetch(`http://http://34.76.194.134:5284/${encodedUrl}`);
+        const longUrl = await response.text();
+
+        // Check if the longUrl starts with a valid protocol (e.g., http:// or https://)
+        if (isValidUrl(longUrl)) {
+          window.open(longUrl, '_blank'); // Redirect to the original URL
+        } else {
+          console.error("Invalid URL format:", longUrl);
+        }
+      } catch (error) {
+        console.error("Error redirecting:", error);
+      }
+    };
+
+    const isValidUrl = (url) => {
+      return url.startsWith("http://") || url.startsWith("https://");
+    };
+  </script>
+
 </body>
 </html>
