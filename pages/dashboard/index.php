@@ -162,12 +162,7 @@
                 </div>
             </div>
 
-            <div class="statistics-section">
-                <h1>Adopted and loved by millions of users for over a decade</h1>
-                <div class="statistic-container">
 
-                </div>
-            </div>
 
 
         </div>
