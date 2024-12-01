@@ -7,57 +7,57 @@ echo "<script>
    
     if (localStorage.getItem('authToken')) {
         
-        window.location.href = 'dashboard.php';
+        window.location.href = 'dashboard.php'; 
     }
 </script>";
-
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? '';
     $fullName = $_POST['fullName'] ?? '';
 
+    // Validate email
+    $emailPattern = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
+    if (!preg_match($emailPattern, $email)) {
+        $error = "Invalid email format";
+    }
 
-    $url = "http://34.76.194.134:5284/api/User/signup";
+    // Validate password
+    $passwordPattern = '/^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/';
+    if (empty($error) && !preg_match($passwordPattern, $password)) {
+        $error = "Password must be at least 8 characters, One uppercase letter and one number.";
+    }
 
+    if (empty($error)) {
+        $url = "http://34.76.194.134:5284/api/User/signup";
+        $data = json_encode(array(
+            "email" => $email,
+            "fullName" => $fullName,
+            "password" => $password
+        ));
 
-    $data = json_encode(array(
-        "email" => $email,
-        "fullName" => $fullName,
-        "password" => $password
-    ));
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 
+        $response = curl_exec($ch);
+        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
 
-    $ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-
-
-    $response = curl_exec($ch);
-    $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
-
-
-    echo "<script>console.log('HTTP Code: {$http_code}');</script>";
-    echo "<script>console.log('Response: " . addslashes($response) . "');</script>";
-
-    if ($http_code == 200) {
-
-        $success = 'Registration successful! You can now log in.';
-        echo "<script>console.log('Registration successful!');
-         window.location.href = 'login.php';
-         </script>";
-
-        exit;
-    } else {
-
-        $error = 'There was an error with the registration process. Please try again.';
-        echo "<script>console.log('Error: {$error}');</script>";
+        if ($http_code == 200) {
+            $success = 'Registration successful! Redirecting to login.';
+            header("Location: login.php");
+            exit;
+        } else {
+            $error = 'Error during registration: ' . $response;
+        }
     }
 }
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -86,17 +86,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <div class="form-group">
                 <label>Email</label>
-                <input type="email" name="email" placeholder="Email address" required>
+                <input type="text" name="email" placeholder="Email address" required>
             </div>
             <div class="form-group">
                 <label>Password</label>
                 <input type="password" name="password" placeholder="Password" required>
             </div>
             <?php if ($error): ?>
-                <div class=""><?php echo $error; ?></div>
+                <div class="message"><?php echo $error; ?></div>
             <?php endif; ?>
             <?php if ($success): ?>
-                <div class=""><?php echo $success; ?></div>
+                <div class="message"><?php echo $success; ?></div>
             <?php endif; ?>
             <button type="submit" class="">Register</button>
 
