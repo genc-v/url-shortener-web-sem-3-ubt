@@ -24,25 +24,35 @@
     <div class="content-container">
         <div class="content">
             <div class="hero">
-                <p class="slogan">Great Connections Start with a click OR SCAN</p>
-                <h1>The Bytely Connections Platform</h1>
-                <p class="text">All the products you need to build brand connections, manage links and QR Codes, and
-                    connect with
-                    audiences everywhere, in a single unified platform.</p>
+                <div class="hero-text">
+                    <p class="slogan">Great Connections Start with a click OR SCAN</p>
+                    <h1>The Bytely Connections Platform</h1>
+                    <p class="text">All the products you need to build brand connections, manage links and QR Codes, and
+                        connect with
+                        audiences everywhere, in a single unified platform.</p>
 
-                <div class="buttonContainer">
-                    <a href="../dashboard/dashboard.php"><button>Get started for free</button></a>
-                    <a href="../Login-Register/register.php"><button class="buttonClear">Sign up for more</button></a>
+                    <div class="buttonContainer">
+                        <a href="../dashboard/dashboard.php"><button>Get started for free</button></a>
+                        <a href="../Login-Register/register.php"><button class="buttonClear">Sign up for
+                                more</button></a>
+                    </div>
                 </div>
+
+                <div class="hero-image"><img src="../../assets\images\png\dashboard-image.png" alt=""></div>
             </div>
 
             <div class="features">
-                <div class="card">
-                    <div class="card-top"></div>
-                    <div class="card-bottom"></div>
+                <h1>Features</h1>
+                <div class="cards-container">
+                    <div class="card">
+                        <div class="card-top"></div>
+                        <div class="card-bottom"></div>
+                    </div>
+                    <div class="card"></div>
+                    <div class="card"></div>
                 </div>
-                <div class="card"></div>
-                <div class="card"></div>
+
+
             </div>
 
 
