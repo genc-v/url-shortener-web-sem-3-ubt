@@ -74,9 +74,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script>
     const token = localStorage.getItem('authToken');
-    
+
     if (!localStorage.getItem('authToken')) {
-        window.location.href = 'login.php';
+      window.location.href = 'login.php';
     }
 
     const timeAgo = (date) => {
@@ -115,7 +115,7 @@
         urlData = data.urls;
         displayUrls(urlData);
       } catch (error) {
-        console.log("Error fetching data: ", error);
+        return;
       }
     };
 
@@ -150,7 +150,7 @@
            </td>
           <td >
 
-          <div class="dashbaord-actoins"><svg onclick="openModal('${url.shortUrl}')" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+          <div class="dashboard-actoins"><svg onclick="openModal('${url.shortUrl}')" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                                         stroke="rgb(255, 23, 52)">
                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">

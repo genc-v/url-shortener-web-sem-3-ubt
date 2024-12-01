@@ -15,7 +15,7 @@ function renderNavbar()
             <div class="navbar-center" id="navbar-center">
                 <a class="link" href="index.php">Home</a>
                 <a class="link" href="search.php">Search</a>
-                <a class="link" href="dashbaord.php">Dashbaord</a>
+                <a class="link" href="dashboard.php">Dashboard</a>
 
             </div>
 
@@ -68,8 +68,8 @@ function renderNavbar()
                 overlay.style.display = "block";
             }
             else {
-                authButtonContainer.style.right = '-50vw';
-                dropwDownMenu.style.right = '-50vw';
+                authButtonContainer.style.right = '-60vw';
+                dropwDownMenu.style.right = '-60vw';
                 overlay.style.display = "none";
             }
         }
@@ -164,7 +164,7 @@ function renderNavbar()
                 padding: 15px;
                 scale: 0.8;
                 position: fixed;
-                right: -50vw;
+                right: -60vw;
                 top: 232.5px;
                 transition: 0.5s;
                 z-index: 3;
@@ -206,7 +206,7 @@ function renderNavbar()
                 flex-direction: column;
                 position: fixed;
                 justify-content: center;
-                right: -50vw;
+                right: -60vw;
                 top: 95px;
                 gap: 5px;
                 height: 200px;
