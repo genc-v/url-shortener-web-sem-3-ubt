@@ -1,0 +1,134 @@
+@import url(../../assets/styles/main.css);
+
+.content-container {
+  margin-top: 125px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.content {
+  width: 80%;
+}
+.hero {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.hero-text {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.slogan {
+  font-size: 1.75rem;
+  font-weight: 400;
+  opacity: 0.6;
+  text-transform: uppercase;
+}
+
+.hero > .hero-text > h1,
+p {
+  width: 100%;
+  text-align: center;
+}
+
+.text {
+  opacity: 1;
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-top: 25px;
+  width: 80%;
+}
+
+.buttonContainer {
+  width: 100%;
+  margin-top: 30px;
+  gap: 20px;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.buttonContainer > a > button {
+  width: 200px;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+
+.hero-image {
+  width: 50%;
+  overflow: hidden;
+}
+
+.hero-image > img {
+  width: 100%;
+  scale: 1.2;
+}
+
+.features {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 50px;
+}
+
+.features > h1 {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  color: var(--blue);
+}
+
+.features > h1::before {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 3px;
+  translate: -20px 45px;
+  background: var(--blue);
+}
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.card {
+  width: 300px;
+  height: 450px;
+  border-radius: 20px;
+  border: 1px solid rgb(207, 207, 207);
+  background-color: var(--gray);
+}
+
+@media (max-width: 757px) {
+  .content-container {
+    margin-top: 50px;
+  }
+  .hero {
+    flex-direction: column;
+    padding: 10px;
+    gap: 50px;
+  }
+
+  .hero > .hero-text,
+  .hero-image {
+    width: 95%;
+  }
+  .content {
+    width: 100%;
+  }
+
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .buttonContainer > a > button {
+    width: 175px;
+  }
+}
