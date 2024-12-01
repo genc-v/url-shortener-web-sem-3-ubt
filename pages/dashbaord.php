@@ -15,7 +15,7 @@
   <div id="toast-container"></div>
 
   <div class="urlList-container">
-    <h2 class="url-list__title">Your Previous URLs</h2>
+    <h2 class="url-list__title">Dashbaord</h2>
     <div class="table-container">
       <table>
         <thead>
@@ -23,6 +23,7 @@
             <th id="originalUrl-header" onclick="sortTable('originalUrl')">Original URL</th>
             <th>Short URL</th>
             <th id="dateCreated-header" onclick="sortTable('dateCreated')">Date Created</th>
+            <th>Clicks</th>
             <th>Description</th>
             <th>Actions</th>
           </tr>
@@ -121,7 +122,8 @@
       <td><img src="${faviconUrl}" alt="favicon" style="width: 16px; height: 16px; margin-right: 8px;">${url.originalUrl}</td>
       <td><a href="http://localhost:3000/${url.shortUrl}" target="_blank">http://localhost:3000/${url.shortUrl}</a></td>
       <td>${timeAgo(url.dateCreated)}</td>
-      <td>${url.description}</td> <!-- Add description here -->
+      <td>${url.nrOfClicks}</td> <!-- Display the number of clicks here -->
+      <td>${url.description}</td> <!-- Display description here -->
       <td class="dashbaord-actoins">
         <button onclick="openModal('${url.id}')">QR Code</button>
         <button onclick="openEditModal(${url.id}, '${url.description}')">Edit Description</button>
@@ -131,6 +133,7 @@
         tableBody.appendChild(row);
       });
     };
+
 
 
     const openModal = (id) => {
