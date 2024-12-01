@@ -12,6 +12,10 @@
 </head>
 
 <body>
+  <?php 
+  include "../pages/Header-Footer/header.php";
+  renderNavbar()
+  ?>
   <div id="toast-container"></div>
 
   <div class="urlList-container">
@@ -62,6 +66,10 @@
       <button onclick="closeEditModal()">Cancel</button>
     </div>
   </div>
+  <?php 
+  include "../pages/Header-Footer/footer.php";
+  renderFooter()
+  ?>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script>

@@ -46,20 +46,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
 
-
-    echo "<script>console.log('HTTP Code: {$http_code}');</script>";
-    echo "<script>console.log('Response: " . addslashes($response) . "');</script>";
-
-    if ($http_code == 200) {
-
-        $success = 'Registration successful! You can now log in.';
-        echo "<script>console.log('Registration successful!');</script>";
-
-        exit;
-    } else {
-
-        $error = 'There was an error with the registration process. Please try again.';
-        echo "<script>console.log('Error: {$error}');</script>";
+        if ($http_code == 200) {
+            $success = 'Registration successful! Redirecting to login.';
+            header("Location: login.php");
+            exit;
+        } else {
+            $error = 'Error during registration: ' . $response;
+        }
     }
 }
 ?>
