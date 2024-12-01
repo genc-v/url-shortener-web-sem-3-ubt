@@ -10,7 +10,7 @@ function renderNavbar()
     <div class="navbar-container">
         <div class="navbar">
             <div class="navbar-left">
-                <img src="assets/images/png/logo.png" class="logo" alt="">
+                <a href="index.php"><img src="assets/images/png/logo.png" class="logo" alt=""></a>
             </div>
             <div class="navbar-center" id="navbar-center">
                 <a class="link" href="index.php">Home</a>
@@ -164,7 +164,7 @@ function renderNavbar()
                 scale: 0.8;
                 position: fixed;
                 right: -50vw;
-                top: 250px;
+                top: 232.5px;
                 transition: 0.5s;
                 z-index: 3;
             }
@@ -172,6 +172,7 @@ function renderNavbar()
             .logButton {
                 border: none;
                 color: white;
+                width: 120px;
                 font-size: 2.75rem;
                 font-weight: 600;
             }

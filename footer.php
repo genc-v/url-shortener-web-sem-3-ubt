@@ -9,7 +9,7 @@ function renderFooter()
     <footer>
         <div class="footer-top">
             <div class="logo-div">
-                <img class="logo" src="assets/images/png/logo.png" alt="">
+                <a href="index.php"><img src="assets/images/png/logo.png" class="logo" alt=""></a>
             </div>
 
             <div class="linkContainer">
