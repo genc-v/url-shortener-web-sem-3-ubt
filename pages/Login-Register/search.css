@@ -47,7 +47,7 @@ button {
     padding: 10px;
     border-radius: 8px;
     text-align: center;
-    width: 590px;
+    width: 39%;
     margin-top: 50px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -59,8 +59,12 @@ button {
     border: 1px solid #007bff;
     background-color: #f0f8ff;
     border-radius: 8px;
-    width: 590px;
+    width: 39%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    word-wrap: break-word;
 }
 
 .results h2 {
@@ -100,10 +104,23 @@ button {
 
 @media (max-width: 736px) {
     .search {
-        width: 50%;
-        scale: 0.8;
+        width: 100%;
         justify-content: center;
         align-items: center;
     }
+    .form-group {
+        margin: 0 auto;
+    }
+    input {
+        /* width: 600px; */
+        width: 96%;
+    }
+    button {
+        margin-top: 5px;
+        width: 100%;
+    }
+
+    .results {
+        width: 70%;
+    }
 }
-  

@@ -7,19 +7,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['urlName'], $_POST['au
     $urlName = $_POST['urlName'];
     $authToken = $_POST['authToken'];
 
-    // External API endpoint
     $apiUrl = "http://34.76.194.134:5284/api/search";
 
-    // Prepare query parameters for the API request
     $queryParams = http_build_query([
         'UrlName' => $urlName,
         'token' => $authToken
     ]);
 
-    // Final API URL with query parameters
     $fullUrl = $apiUrl . '?' . $queryParams;
 
-    // Initialize cURL request
     $ch = curl_init($fullUrl);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -27,19 +23,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['urlName'], $_POST['au
         "Content-Type: application/json"
     ]);
 
-    // Execute the API request
     $response = curl_exec($ch);
     $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
 
-    // Handle API response
     if ($http_code == 200) {
         $results = json_decode($response, true);
     } elseif ($http_code == 404) {
-        // Custom message for 404 (no URLs found for the user)
         $error = "No URLs found for this user.";
     } else {
-        // For other HTTP errors, display a general error message
         $error = "Failed to fetch results. Please try again later.";
     }
 }
