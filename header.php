@@ -15,6 +15,7 @@ function renderNavbar()
             <div class="navbar-center" id="navbar-center">
                 <a class="link" href="index.php">Home</a>
                 <a class="link" href="search.php">Search</a>
+                <a class="link" href="createurl.php">Create url</a>
                 <a class="link" href="dashbaord.php">Dashbaord</a>
 
             </div>
