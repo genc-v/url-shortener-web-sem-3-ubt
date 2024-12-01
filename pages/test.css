@@ -7,7 +7,10 @@
   background: #fff;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 h2 {
@@ -234,14 +237,22 @@ th.sorted-desc::after {
   content: " ↓";
 }
 
-@media screen and (max-width: 768px) {
+  label {
+    font-size: 1rem;
+  }
+  select {
+    border-radius: 5px;
+    text-align: center;
+  }
+@media screen and (max-width: 900px) {
   .urlList-container {
     padding: 10px;
   }
 
-  thead {
+  thead  {
     display: none;
   }
+
   table {
     display: block;
     width: 100%;
@@ -283,7 +294,6 @@ th.sorted-desc::after {
     width: 100%;
   }
 
-  /* Adjust modal and button layout */
   .cta__buttons {
     display: flex;
     flex-direction: column;
@@ -292,6 +302,22 @@ th.sorted-desc::after {
 
   .cta__buttons button {
     width: 100%;
+    text-align: center;
+  }
+  .mobile-sort {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  label {
+    font-size: 1rem;
+  }
+  select {
+    border-radius: 5px;
     text-align: center;
   }
 }

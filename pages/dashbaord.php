@@ -12,7 +12,6 @@
 </head>
 
 <body>
-  <!-- Toast container -->
   <div id="toast-container"></div>
 
   <div class="urlList-container">
