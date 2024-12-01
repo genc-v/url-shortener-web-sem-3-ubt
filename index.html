@@ -5,7 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<script>
+const a = async () => {
+   let url = window.location.href; // Get the current URL
+   let path = new URL(url).pathname; // Extract the path part
+   let urlParts = path.split('/'); // Split the path by '/'
+   let urlShort = urlParts[urlParts.length - 1]; // Get the last segment (ID)
 
+   try {
+     const shortUrl = urlShort; 
+    const response = await fetch(`http://34.76.194.134:5284/${shortUrl}`);
+
+     if (!response.ok) {
+       throw new Error('Network response was not ok');
+     }
+
+     const text = await response.text();
+     window.location.href = text
+     try {
+       const data = JSON.parse(text);
+     } catch (jsonError) {
+      console.log(jsonError);
+     }
+   } catch (error) {
+     console.error('Error fetching data:', error);
+   }
+}
+a();
+
+</script>
+<body>
+  PAGE NOT FOUND
 </body>
 </html>
