@@ -92,14 +92,15 @@ function renderNavbar()
 
         .navbar-container {
             margin-top: 10px;
-            max-width: 100%;
+            max-width: 1440px;
             display: flex;
             justify-content: center;
+            margin: auto;
 
         }
 
         .navbar {
-            width: 80%;
+            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;

@@ -18,6 +18,7 @@ h2 {
   margin: 0 0 20px;
   font-weight: 600;
   font-size: 1.1em;
+  text-decoration: underline;
   text-align: center;
 }
 
@@ -25,12 +26,18 @@ h2 {
   overflow-x: auto;
   overflow: hidden;
   border-radius: 15px;
+  border: 1px solid rgba(128, 128, 128, 0.16);
 }
 
 table {
   width: 100%;
+  max-width: 1440px;
   border-collapse: collapse;
-  font-size: 0.8rem;
+  font-size: 1rem;
+}
+
+table * {
+  transition: .2s;
 }
 
 .url-list__title {
@@ -54,6 +61,7 @@ td {
   text-align: left;
   padding: 10px;
   border-bottom: 1px solid #ddd;
+  font-size: 2;
 }
 
 th {
@@ -101,7 +109,7 @@ tr:hover {
 }
 
 button {
-  background-color: #007BFF;
+  background-color: gray;
   color: white;
   border: none;
   border-radius: 4px;
@@ -110,8 +118,26 @@ button {
   font-size: 1em;
 }
 
-button:hover {
-  background-color: #0056b3;
+.original-url {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: .8rem;
+}
+
+.text-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px;
+}
+
+td img {
+  border: 1px solid rgba(128, 128, 128, 0.545);
+  border-radius: 50%;
+  padding: 10px;
 }
 
 .qr-code {
@@ -143,7 +169,7 @@ button:hover {
 }
 
 a {
-  color: #007BFF;
+  color: var(--blue);
   text-decoration: none;
 }
 
@@ -245,7 +271,7 @@ th.sorted-desc::after {
     border-radius: 5px;
     text-align: center;
   }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1110px) {
   .urlList-container {
     padding: 10px;
   }
@@ -257,6 +283,7 @@ th.sorted-desc::after {
   table {
     display: block;
     width: 100%;
+    
     border-collapse: collapse;
   }
 
@@ -270,8 +297,17 @@ th.sorted-desc::after {
     font-weight: 600;
   }
   
+  .original-url {
+    /* width: 10%; */
+    display: block;
+    justify-content: center;
+  }
+  .text-clamp {
+    margin: auto;
+  }
+
   td {
-    width: 94%;
+    width: 92%;
     text-align: center;
     border-bottom: 1px solid #ddd;
     padding: 10px;

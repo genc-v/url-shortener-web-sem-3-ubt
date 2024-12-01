@@ -19,7 +19,7 @@
   <div id="toast-container"></div>
 
   <div class="urlList-container">
-    <h2 class="url-list__title">Dashbaord</h2>
+    <h2 class="url-list__title">Dashboard</h2>
     <div class="table-container">
       <table>
         <thead>
@@ -27,7 +27,7 @@
             <th id="originalUrl-header" onclick="sortTable('originalUrl')">Original URL</th>
             <th>Short URL</th>
             <th id="dateCreated-header" onclick="sortTable('dateCreated')">Date Created</th>
-            <th>Clicks</th>
+            <th id="clicks-header" onclick="sortTable('clicks')">Clicks</th>
             <th>Description</th>
             <th>Actions</th>
           </tr>
@@ -61,11 +61,11 @@
     <h3>Edit Description</h3>
     <input type="text" id="edit-description-input" />
     <div class="cta__buttons">
-
       <button onclick="updateDescription()">Save</button>
       <button onclick="closeEditModal()">Cancel</button>
     </div>
   </div>
+
   <?php 
   include "../pages/Header-Footer/footer.php";
   renderFooter()
@@ -100,15 +100,16 @@
     let urlData = [];
     let sortOrder = {
       originalUrl: 'asc',
-      dateCreated: 'asc'
+      dateCreated: 'asc',
+      clicks: 'asc'
     };
 
     const fetchUrls = async () => {
       try {
         const response = await fetch(`http://34.76.194.134:5284/Urls/${token}`);
         const data = await response.json();
-        urlData = data.urls; // Store the fetched data in a variable
-        displayUrls(urlData); // Display the data
+        urlData = data.urls;
+        displayUrls(urlData);
       } catch (error) {
         console.log("Error fetching data: ", error);
       }
@@ -121,23 +122,34 @@
 
     const displayUrls = (urls) => {
       const tableBody = document.getElementById('url-table-body');
-      tableBody.innerHTML = ''; // Clear existing rows
+      tableBody.innerHTML = '';
 
       urls.forEach((url) => {
-        const faviconUrl = fetchFavicon(url.originalUrl); // Get favicon URL
+        const faviconUrl = fetchFavicon(url.originalUrl);
         const row = document.createElement('tr');
         row.innerHTML = `
-      <td><img src="${faviconUrl}" alt="favicon" style="width: 16px; height: 16px; margin-right: 8px;">${url.originalUrl}</td>
-      <td><a href="http://localhost:3000/${url.shortUrl}" target="_blank">http://localhost:3000/${url.shortUrl}</a></td>
-      <td>${timeAgo(url.dateCreated)}</td>
-      <td>${url.nrOfClicks}</td> <!-- Display the number of clicks here -->
-      <td>${url.description}</td> <!-- Display description here -->
-      <td class="dashbaord-actoins">
-        <button onclick="openModal('${url.id}')">QR Code</button>
-        <button onclick="openEditModal(${url.id}, '${url.description}')">Edit Description</button>
-        <button onclick="openDeleteModal(${url.id})">Delete</button>
-      </td>
-    `;
+          <td>
+          <div class="original-url">
+          <img src="${faviconUrl}" alt="favicon" style="width: 16px; height: 16px; margin-right: 8px;">
+          <div>
+          ${url.originalUrl}
+          </div>
+          </div>
+          </td>
+          <td><a href="http://bytely.xyz/${url.shortUrl}" target="_blank">bytely.xyz/${url.shortUrl}</a></td>
+          <td>${timeAgo(url.dateCreated)}</td>
+          <td>${url.nrOfClicks}</td> 
+          <td> 
+          <div  class="text-clamp">
+          ${url.description}
+          </div>
+           </td>
+          <td class="dashbaord-actoins">
+            <button onclick="openModal('${url.id}')">QR Code</button>
+            <button onclick="openEditModal(${url.id}, '${url.description}')">Edit Description</button>
+            <button onclick="openDeleteModal(${url.id})">Delete</button>
+          </td>
+          `;
         tableBody.appendChild(row);
       });
     };
@@ -271,7 +283,6 @@
       let sortDir = sortOrder[column] === 'asc' ? 'desc' : 'asc';
       sortOrder[column] = sortDir;
 
-      // Update the header arrow direction
       const headers = document.querySelectorAll('th');
       headers.forEach((header) => {
         header.classList.remove('sorted-asc', 'sorted-desc');
@@ -285,12 +296,24 @@
       }
 
       if (column === 'originalUrl') {
-        sortedData.sort((a, b) => sortDir === 'asc' ? a.originalUrl.localeCompare(b.originalUrl) : b.originalUrl.localeCompare(a.originalUrl));
+        sortedData.sort((a, b) =>
+          sortDir === 'asc'
+            ? a.originalUrl.localeCompare(b.originalUrl)
+            : b.originalUrl.localeCompare(a.originalUrl)
+        );
       } else if (column === 'dateCreated') {
-        sortedData.sort((a, b) => sortDir === 'asc' ? new Date(a.dateCreated) - new Date(b.dateCreated) : new Date(b.dateCreated) - new Date(a.dateCreated));
+        sortedData.sort((a, b) =>
+          sortDir === 'asc'
+            ? new Date(a.dateCreated) - new Date(b.dateCreated)
+            : new Date(b.dateCreated) - new Date(a.dateCreated)
+        );
+      } else if (column === 'clicks') {
+        sortedData.sort((a, b) =>
+          sortDir === 'asc' ? a.nrOfClicks - b.nrOfClicks : b.nrOfClicks - a.nrOfClicks
+        );
       }
 
-      displayUrls(sortedData); // Re-render the table with sorted data
+      displayUrls(sortedData);
     };
 
     window.onload = () => {

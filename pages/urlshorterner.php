@@ -12,23 +12,20 @@
         href="https://fonts.googleapis.com/css2?family=Nokora:wght@100;300;400;700;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f4f4f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+
+        @import url(../assets/styles/main.css);
 
         .containerUrl {
             background-color: white;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 500px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            border-radius: 15px;
+            border: 1px solid rgba(128, 128, 128, 0.16);
         }
 
         .inputUrl {
@@ -44,7 +41,7 @@
         .button {
             width: 100%;
             padding: 12px;
-            background-color: #4CAF50;
+            background-color: var(--blue);
             border: none;
             color: white;
             font-size: 16px;
@@ -54,12 +51,13 @@
         }
 
         .button:hover {
-            background-color: #45a049;
+            background-color: gray;
         }
 
         .message {
             margin-top: 10px;
             font-size: 14px;
+            margin:auto;
         }
 
         .shortened-url-container {
@@ -92,8 +90,16 @@
     </style>
 </head>
 <body>
+
+  <?php 
+  include "../pages/Header-Footer/header.php";
+  renderNavbar()
+  ?>
+
     <div class="containerUrl">
+        <p>Enter your long URL here</p>
         <input type="text" id="url-input" placeholder="Enter URL" class="inputUrl" />
+        <p>Your Description</p>
         <input type="text" id="description-input" placeholder="Enter Description" class="inputUrl" />
         <button class="button" onclick="shortenUrl()">Shorten URL</button>
         <div id="message" class="message"></div>
@@ -101,6 +107,10 @@
         <div id="qr-code-container" class="qr-code-container"></div>
     </div>
 
+  <?php 
+  include "../pages/Header-Footer/footer.php";
+  renderFooter()
+  ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
   const token = localStorage.getItem('authToken');
@@ -140,15 +150,15 @@
       const data = await response.text(); // Read response as plain text
 
       if (response.ok) {
-        messageElement.textContent = "URL successfully shortened!";
+        messageElement.textContent = "";
         messageElement.style.color = "green";
         
         const shortenedUrl = data.trim(); // Assuming the response is just the ID
-        const shortenedLink = `http://localhost:3000/${shortenedUrl}`;
+        const shortenedLink = shortenedUrl;
         
         const linkElement = document.createElement('a');
-        linkElement.href = shortenedLink;
-        linkElement.textContent = `Shortened URL: ${shortenedLink}`;
+        linkElement.href = `http://bytely.xyz/${shortenUrl}`;
+        linkElement.textContent = `bytely.xyz/${shortenedLink}`;
         linkElement.target = "_blank"; // Open in a new tab
         shortenedUrlContainer.innerHTML = ""; // Clear previous link
         shortenedUrlContainer.appendChild(linkElement);
@@ -162,9 +172,7 @@
         }
 
         document.getElementById('description-input').value = ""; // Clear description input
-        setTimeout(() => {
-          window.location.href = "links.html"; // Redirect to links page
-        }, 1500); // Redirect after 1.5 seconds
+  
       } else {
         console.error("Error response:", data);
         messageElement.textContent = `Error: ${data || 'Failed to shorten URL'}`;
