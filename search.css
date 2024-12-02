@@ -1,6 +1,4 @@
 @import url(assets/styles/main.css);
-@import url(/test.css);
-
 
 .search {
     width: 100%;
@@ -19,7 +17,7 @@ h1 {
     font-size: 5rem;
     text-decoration: underline;
 }
-    
+
 p {
     margin-top: -5px;
     font-size: 2rem;
@@ -35,8 +33,7 @@ p {
     width: 600px;
 }
 
-.cta-search  {
-    /* width: 610px; */
+.cta-search {
     width: 100%;
     border: 1px solid var(--blue);
 }
@@ -67,8 +64,8 @@ p {
     overflow-y: auto;
     overflow-x: hidden;
     word-wrap: break-word;
-  border-radius: 15px;
-  border: 1px solid rgba(128, 128, 128, 0.16);
+    border-radius: 15px;
+    border: 1px solid rgba(128, 128, 128, 0.16);
 }
 
 .results h2 {
@@ -113,13 +110,15 @@ p {
         justify-content: center;
         align-items: center;
     }
+
     .form-group {
         margin: 0 auto;
     }
+
     input {
-        /* width: 600px; */
         width: 96%;
     }
+
     .cta-search {
         margin-top: 5px;
         width: 100%;

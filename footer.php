@@ -1,25 +1,22 @@
 <?php
-// navbar.php
-
-
 function renderFooter()
 {
 
     ?>
     <footer>
         <div class="footer-top">
-            <div class="logo-div">
+            <a href="index.php" class="logo-div">
                 <img class="logo" src="assets/images/png/logo.png" alt="">
-            </div>
+            </a>
 
             <div class="linkContainer">
-                <a class="footerLink" href="index.php">Home</a>
-                <a class="footerLink" href="search.php">Search</a>
-                <a class="footerLink" href="dashboard.php">Dashboard</a>
+                <a class="link" href="index.php">Home</a>
+                <a class="link" href="search.php">Search</a>
+                <a class="link" href="createurl.php">Create url</a>
+                <a class="link" href="dashboard.php">Dashboard</a>
             </div>
 
             <div class="icon-container">
-                <!-- Instagram -->
                 <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                         <path
@@ -27,7 +24,6 @@ function renderFooter()
                     </svg>
                 </a>
 
-                <!-- Gmail -->
                 <a href="mailto:your-email@gmail.com" target="_blank" aria-label="Gmail">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                         <path
@@ -35,7 +31,6 @@ function renderFooter()
                     </svg>
                 </a>
 
-                <!-- LinkedIn -->
                 <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                         <path
@@ -43,7 +38,6 @@ function renderFooter()
                     </svg>
                 </a>
 
-                <!-- GitHub -->
                 <a href="https://github.com" target="_blank" aria-label="GitHub">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                         <path
@@ -52,16 +46,10 @@ function renderFooter()
                 </a>
             </div>
         </div>
-
         <div class="footer-bottom">
             <p> &copy; 2024 Bytely. All rights reserved.</p>
         </div>
-
-
     </footer>
-
-
-
     <style>
         footer {
             height: 150px;
@@ -160,6 +148,5 @@ function renderFooter()
             }
         }
     </style>
-
     <?php
 }

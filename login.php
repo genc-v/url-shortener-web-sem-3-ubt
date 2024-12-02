@@ -10,21 +10,16 @@ echo "<script>
     }
 </script>";
 
-
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'] ?? '';
-    $password = $_POST['password'] ?? ''; // Get the full name from the form
-
+    $password = $_POST['password'] ?? '';
 
     $url = "http://34.76.194.134:5284/api/User/login";
-
 
     $data = json_encode(array(
         "email" => $email,
         "password" => $password
     ));
-
 
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -32,15 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 
-
     $response = curl_exec($ch);
     $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
-
-
-
-
-
 
     if ($http_code == 200) {
 
@@ -50,7 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         window.location.href = 'index.php'; 
         localStorage.setItem('authToken', '$response');
         </script>";
-
 
         exit;
     } else {

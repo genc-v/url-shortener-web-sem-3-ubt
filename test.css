@@ -10,9 +10,17 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap:2.5rem;
+  gap: 2.5rem;
+  min-height: 80vh;
 }
 
+.urlList-container button {
+  width: auto;
+  height: auto;
+}
+.empty-message {
+  text-align: center;
+}
 .table-container {
   overflow-x: auto;
   overflow: hidden;
@@ -120,7 +128,7 @@ td img {
   gap: 15px;
 }
 
-.dashboard-actoins > svg {
+.dashboard-actoins>svg {
   width: 20px;
 }
 
@@ -129,7 +137,6 @@ td img {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* font-size: .5rem; */
   text-align: center;
 }
 
@@ -140,10 +147,11 @@ td img {
   flex-direction: column;
   gap: 10px;
 }
-svg {
-  /* height: 20px; */
+
+.urlList-container svg {
   cursor: pointer;
 }
+
 .cta__buttons button {
   height: 100% !important;
   width: 100%;
@@ -158,6 +166,7 @@ svg {
 
 a {
   color: var(--blue);
+
   text-decoration: none;
 }
 
@@ -171,6 +180,7 @@ a:hover {
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
+  font-size: 2rem;
 }
 
 .toast {
@@ -222,6 +232,7 @@ a:hover {
   margin-bottom: 10px;
   /* font-size: 1em; */
 }
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -232,10 +243,12 @@ a:hover {
   display: none;
   z-index: 1000;
 }
+
 .modal h3 {
   /* font-size: 1rem; */
   margin-bottom: 10px;
 }
+
 #confirm-delete {
   background-color: #f44336;
 }
@@ -256,6 +269,7 @@ select {
   border-radius: 5px;
   text-align: center;
 }
+
 @media screen and (max-width: 1110px) {
   .urlList-container {
     padding: 10px;
@@ -273,6 +287,7 @@ select {
     width: 100%;
     height: 100%;
   }
+
   table {
     display: block;
     width: 100%;
@@ -293,10 +308,11 @@ select {
   }
 
   .original-url {
-    /* width: 10%; */
     display: block;
-    justify-content: center;
+    word-break: break-all;
+    overflow-wrap: anywhere
   }
+
   .text-clamp {
     margin: auto;
   }
@@ -324,6 +340,7 @@ select {
     width: 100%;
     text-align: center;
   }
+
   .mobile-sort {
     width: 100%;
     display: flex;
@@ -333,9 +350,11 @@ select {
     gap: 10px;
     margin-bottom: 20px;
   }
+
   label {
     /* font-size: 1rem; */
   }
+
   select {
     border-radius: 5px;
     text-align: center;

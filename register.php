@@ -16,14 +16,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'] ?? '';
     $fullName = $_POST['fullName'] ?? '';
 
-    // Validate email
     $emailPattern = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
     if (!preg_match($emailPattern, $email)) {
         $error = "Invalid email format";
     }
 
-    // Validate password
-    $passwordPattern = '/^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/';
+    $passwordPattern = '/^(?=.*[A-Z])(?=.*\d)[A-Za-z\d!@#$%^&*()]{8,}$/';
     if (empty($error) && !preg_match($passwordPattern, $password)) {
         $error = "Password must be at least 8 characters, One uppercase letter and one number.";
     }
@@ -56,8 +54,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">

@@ -22,19 +22,23 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      gap: 50px
+      gap: 50px;
+      padding:0 20px;
     }
 
     .containerUrl {
       background-color: white;
       padding: 20px;
       border-radius: 10px;
-      width: 100%;
       max-width: 500px;
+      width: 100%;
       display: flex;
       flex-direction: column;
       border-radius: 15px;
       border: 1px solid rgba(128, 128, 128, 0.16);
+    }
+    .containerUrl * {
+      text-align: center;
     }
 
     .containerUrl button {
@@ -145,7 +149,6 @@
       window.location.href = 'dashboard.php';
     };
 
-    // Regex for URL validation
     const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
 
     const shortenUrl = async () => {
@@ -155,7 +158,6 @@
       const shortenedUrlContainer = document.getElementById('shortened-url-container');
       const qrCodeContainer = document.getElementById('qr-code-container');
 
-      // Validate URL format
       if (!urlRegex.test(url)) {
         messageElement.textContent = "Please enter a valid URL.";
         messageElement.style.color = "red";
@@ -177,23 +179,22 @@
           { method: 'POST' }
         );
 
-        const data = await response.text(); // Read response as plain text
+        const data = await response.text();
 
         if (response.ok) {
           messageElement.textContent = "";
           messageElement.style.color = "green";
 
-          const shortenedUrl = data.trim(); // Assuming the response is just the ID
+          const shortenedUrl = data.trim();
           const shortenedLink = shortenedUrl;
 
           const linkElement = document.createElement('a');
           linkElement.href = `http://bytely.xyz/${shortenUrl}`;
           linkElement.textContent = `bytely.xyz/${shortenedLink}`;
-          linkElement.target = "_blank"; // Open in a new tab
-          shortenedUrlContainer.innerHTML = ""; // Clear previous link
+          linkElement.target = "_blank";
+          shortenedUrlContainer.innerHTML = ""; 
           shortenedUrlContainer.appendChild(linkElement);
 
-          // Generate QR Code only if QRCode.js is loaded
           if (shortenedLink) {
             generateQrCode(shortenedLink);
           } else {
@@ -201,7 +202,7 @@
             messageElement.style.color = "red";
           }
 
-          document.getElementById('description-input').value = ""; // Clear description input
+          document.getElementById('description-input').value = "";
 
         } else {
           console.error("Error response:", data);
@@ -218,12 +219,9 @@
     const generateQrCode = (url) => {
       const qrCodeContainer = document.getElementById('qr-code-container');
 
-      // Ensure QRCode.js is available
       if (typeof QRCode !== "undefined") {
-        // Clear previous QR code if any
         qrCodeContainer.innerHTML = "";
 
-        // Create the QR code
         const qrCode = new QRCode(qrCodeContainer, {
           text: url,
           width: 128,
@@ -232,7 +230,6 @@
           colorLight: "#ffffff",
         });
 
-        // Wait for the QR code image to load, then add the download link
         qrCodeContainer.querySelector("img").onload = () => {
           const qrImage = qrCodeContainer.querySelector("img");
           const downloadButton = document.createElement('a');
@@ -247,9 +244,7 @@
         console.error("QRCode.js is not available.");
       }
     };
-
   </script>
-
 </body>
 
 </html>
