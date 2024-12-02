@@ -150,13 +150,6 @@
       window.location.href = 'login.php';
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
-      const authToken = localStorage.getItem('authToken');
-      if (authToken) {
-        document.getElementById('authToken').value = authToken;
-      }
-    });
-
     const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
 
     const shortenUrl = async () => {
