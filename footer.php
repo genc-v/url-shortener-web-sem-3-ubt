@@ -10,10 +10,10 @@ function renderFooter()
             </a>
 
             <div class="linkContainer">
-                <a class="link" href="index.php">Home</a>
-                <a class="link" href="search.php">Search</a>
-                <a class="link" href="createurl.php">Create url</a>
-                <a class="link" href="dashboard.php">Dashboard</a>
+                <a class="footerLink" href="index.php">Home</a>
+                <a class="footerLink" href="search.php">Search</a>
+                <a class="footerLink" href="createurl.php">Create url</a>
+                <a class="footerLink" href="dashboard.php">Dashboard</a>
             </div>
 
             <div class="icon-container">
@@ -71,7 +71,7 @@ function renderFooter()
         }
 
         .footer-top>* {
-            width: 30%;
+            width: 33%;
         }
 
         .linkContainer {
@@ -136,6 +136,16 @@ function renderFooter()
                 gap: 20px;
             }
 
+            .linkContainer {
+                display: flex;
+                justify-content: space-between;
+
+            }
+
+            .footerLink {
+                margin: 0 5px;
+                font-size: 1.5rem;
+            }
 
             .footer-top>* {
                 width: 100%;
