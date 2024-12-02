@@ -1,6 +1,5 @@
 @import url(assets/styles/main.css);
 
-
 .urlList-container {
   max-width: 1440px;
   margin: 40px auto;
@@ -29,7 +28,7 @@ table {
 }
 
 table * {
-  transition: .2s;
+  transition: 0.2s;
   font-size: 2rem;
 }
 
@@ -98,7 +97,7 @@ table button {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 
 .text-clamp {
@@ -116,12 +115,12 @@ td img {
   padding: 10px;
 }
 
-.dashbaord-actoins {
+.dashboard-actoins {
   display: flex;
   gap: 15px;
 }
 
-svg {
+.dashboard-actoins > svg {
   width: 20px;
 }
 
@@ -139,13 +138,13 @@ svg {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap:10px
+  gap: 10px;
 }
 svg {
   /* height: 20px; */
   cursor: pointer;
 }
-.cta__buttons  button{
+.cta__buttons button {
   height: 100% !important;
   width: 100%;
   text-align: center;
@@ -253,21 +252,20 @@ th.sorted-desc::after {
   content: " ↓";
 }
 
-
-  select {
-    border-radius: 5px;
-    text-align: center;
-  }
+select {
+  border-radius: 5px;
+  text-align: center;
+}
 @media screen and (max-width: 1110px) {
   .urlList-container {
     padding: 10px;
   }
 
-  thead  {
+  thead {
     display: none;
   }
 
-  .dashbaord-actoins {
+  .dashboard-actoins {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -278,20 +276,22 @@ th.sorted-desc::after {
   table {
     display: block;
     width: 100%;
-    
+
     border-collapse: collapse;
   }
 
-  tbody, th, td {
+  tbody,
+  th,
+  td {
     display: block;
     width: 100%;
   }
-  
+
   th {
     text-align: center;
     font-weight: 600;
   }
-  
+
   .original-url {
     /* width: 10%; */
     display: block;

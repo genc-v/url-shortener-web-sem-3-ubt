@@ -38,15 +38,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     curl_close($ch);
 
 
-    echo "<script>console.log('HTTP Code: {$http_code}');</script>";
-    echo "<script>console.log('Response: " . addslashes($response) . "');</script>";
+
 
 
 
     if ($http_code == 200) {
 
         $success = 'Login succsesful!';
-        echo "<script>console.log('Login Succsesful!');</script>";
 
         echo "<script>
         window.location.href = 'index.php'; 
@@ -58,7 +56,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
 
         $error = 'There was an error with the login process. Please try again.';
-        echo "<script>console.log('Error: {$error}');</script>";
     }
 }
 ?>

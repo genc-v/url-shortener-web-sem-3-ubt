@@ -65,7 +65,7 @@
                                 <p class="card-paragraph">A comprehensive solution to help make every point of
                                     connection between your content
                                     and your audience more powerful.</p>
-                                <a href="urls.php"><button class="buttonClear button">Try it out</button></a>
+                                <a href="search.php"><button class="buttonClear button">Try it out</button></a>
                             </div>
 
                         </div>
@@ -115,7 +115,7 @@
                                     </svg> QR CODES</h3>
                                 <p class="card-paragraph">QR Code solutions for every customer, business and brand
                                     experience.</p>
-                                <a href="url.php"><button class="buttonClear button">Try it out</button></a>
+                                <a href="dashboard.php"><button class="buttonClear button">Try it out</button></a>
                             </div>
 
                         </div>
@@ -155,7 +155,7 @@
                                     </svg> Clicker Counter</h3>
                                 <p class="card-paragraph">Track your traffic, for a seamless user experience and testing
                                     ,use statistics and metricts for development</p>
-                                <a href="url.php"><button class="buttonClear button">Try it out</button></a>
+                                <a href="dashboard.php"><button class="buttonClear button">Try it out</button></a>
                             </div>
                         </div>
                     </div>
