@@ -1,0 +1,362 @@
+@import url(assets/styles/main.css);
+
+.urlList-container {
+  max-width: 1440px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2.5rem;
+  min-height: 80vh;
+}
+
+.urlList-container button {
+  width: auto;
+  height: auto;
+}
+.empty-message {
+  text-align: center;
+}
+.table-container {
+  overflow-x: auto;
+  overflow: hidden;
+  border-radius: 15px;
+  border: 1px solid rgba(128, 128, 128, 0.16);
+}
+
+table {
+  width: 100%;
+  max-width: 1440px;
+  border-collapse: collapse;
+  font-size: 5rem;
+}
+
+table * {
+  transition: 0.2s;
+  font-size: 1.7rem;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  font-size: 2;
+}
+
+th {
+  background: #f4f4f4;
+  font-weight: 500;
+}
+
+table a {
+  font-size: 1em;
+}
+
+tr:hover {
+  background-color: #f9f9f9;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+  width: 300px;
+}
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.modal.active,
+.modal-overlay.active {
+  display: block;
+}
+
+table button {
+  background-color: gray;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.original-url {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 0.8rem;
+}
+
+.text-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px;
+}
+
+td img {
+  border: 1px solid rgba(128, 128, 128, 0.545);
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.dashboard-actoins {
+  display: flex;
+  gap: 15px;
+}
+
+.dashboard-actoins>svg {
+  width: 20px;
+}
+
+.qr-code {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.cta__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.urlList-container svg {
+  cursor: pointer;
+}
+
+.cta__buttons button {
+  height: 100% !important;
+  width: 100%;
+  text-align: center;
+}
+
+.close-button {
+  background-color: #f44336;
+  margin-top: 10px;
+  height: auto;
+}
+
+a {
+  color: var(--blue);
+
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#toast-container {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  font-size: 2rem;
+}
+
+.toast {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 10px;
+  opacity: 0;
+  animation: fadeInOut 3s forwards;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.modal-overlay.active {
+  display: block;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+}
+
+.modal input {
+  margin-bottom: 10px;
+  /* font-size: 1em; */
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 1000;
+}
+
+.modal h3 {
+  /* font-size: 1rem; */
+  margin-bottom: 10px;
+}
+
+#confirm-delete {
+  background-color: #f44336;
+}
+
+th {
+  cursor: pointer;
+}
+
+th.sorted-asc::after {
+  content: " ↑";
+}
+
+th.sorted-desc::after {
+  content: " ↓";
+}
+
+select {
+  border-radius: 5px;
+  text-align: center;
+}
+
+@media screen and (max-width: 1110px) {
+  .urlList-container {
+    padding: 10px;
+  }
+
+  thead {
+    display: none;
+  }
+
+  .dashboard-actoins {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px;
+    width: 100%;
+    height: 100%;
+  }
+
+  table {
+    display: block;
+    width: 100%;
+
+    border-collapse: collapse;
+  }
+
+  tbody,
+  th,
+  td {
+    display: block;
+    width: 100%;
+  }
+
+  th {
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .original-url {
+    display: block;
+    word-break: break-all;
+    overflow-wrap: anywhere
+  }
+
+  .text-clamp {
+    margin: auto;
+  }
+
+  td {
+    width: 92%;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+  }
+
+  td:before {
+    content: attr(data-label);
+    font-weight: 600;
+    margin-right: 10px;
+  }
+
+  .cta__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .cta__buttons button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .mobile-sort {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  label {
+    /* font-size: 1rem; */
+  }
+
+  select {
+    border-radius: 5px;
+    text-align: center;
+  }
+}

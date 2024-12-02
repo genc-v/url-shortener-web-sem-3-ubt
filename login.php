@@ -6,26 +6,20 @@ $success = '';
 echo "<script>
    
     if (localStorage.getItem('authToken')) {
-        
-        window.location.href = 'dashboard.php'; 
+        window.location.href = 'index.php'; 
     }
 </script>";
 
-
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'] ?? '';
-    $password = $_POST['password'] ?? ''; // Get the full name from the form
-
+    $password = $_POST['password'] ?? '';
 
     $url = "http://34.76.194.134:5284/api/User/login";
-
 
     $data = json_encode(array(
         "email" => $email,
         "password" => $password
     ));
-
 
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -33,32 +27,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 
-
     $response = curl_exec($ch);
     $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
 
-
-    echo "<script>console.log('HTTP Code: {$http_code}');</script>";
-    echo "<script>console.log('Response: " . addslashes($response) . "');</script>";
-
-
-
     if ($http_code == 200) {
 
         $success = 'Login succsesful!';
-        echo "<script>console.log('Login Succsesful!');</script>";
 
         echo "<script>
-    localStorage.setItem('authToken', '$response');
-    </script>";
-
+        window.location.href = 'index.php'; 
+        localStorage.setItem('authToken', '$response');
+        </script>";
 
         exit;
     } else {
 
         $error = 'There was an error with the login process. Please try again.';
-        echo "<script>console.log('Error: {$error}');</script>";
     }
 }
 ?>
@@ -85,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <p class="pt-6">Dont have an account? <a href="register.php" class="">Sign Up here!</a></p>
             <div class="form-group">
                 <label><b>Email</b></label>
-                <input type="email" name="email" placeholder="Email address" required>
+                <input type="text" name="email" placeholder="Email address" required>
             </div>
             <div class="form-group">
                 <label><b>Password</b></label>
@@ -101,8 +86,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </form>
     </div>
     <div class="secondary-container">
-        <img src="../../assets/images/png/loginImage.png" alt="">
-        <p>Power your links, QR Codes, and landing pages with Bitly's Connections Platform.</p>
+        <img src="assets/images/png/loginImage.png" alt="">
+        <p>Power your links, QR Codes, and landing pages with Bytely's Connections Platform.</p>
     </div>
 </body>
 
