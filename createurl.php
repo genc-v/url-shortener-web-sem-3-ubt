@@ -12,6 +12,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Nokora:wght@100;300;400;700;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/images/png/favicon.ico">
   <style>
     @import url(../assets/styles/main.css);
 
@@ -23,7 +24,7 @@
       justify-content: center;
       flex-direction: column;
       gap: 50px;
-      padding:0 20px;
+      padding: 0 20px;
     }
 
     .containerUrl {
@@ -37,14 +38,11 @@
       border-radius: 15px;
       border: 1px solid rgba(128, 128, 128, 0.16);
     }
+
     .containerUrl * {
       text-align: center;
     }
 
-    .containerUrl button {
-      width: auto;
-      height: auto;
-    }
 
     .inputUrl {
       width: 100%;
@@ -57,20 +55,19 @@
     }
 
     .button {
-      width: 100%;
-      padding: 12px;
+      width: 50%;
+      padding-top: 7.5px;
       background-color: var(--blue);
       border: none;
       color: white;
       font-size: 16px;
       cursor: pointer;
+      display: flex;
+      justify-content: center;
       border-radius: 8px;
       transition: background-color 0.3s;
     }
 
-    .button:hover {
-      background-color: gray;
-    }
 
     .message_url {
       margin-top: 10px;
@@ -128,10 +125,10 @@
       <input type="text" id="url-input" placeholder="Enter URL" class="inputUrl" />
       <p>Your Description</p>
       <input type="text" id="description-input" placeholder="Enter Description" class="inputUrl" />
-    <div style="display: flex; gap: 10px; justify-content: space-between;">
+      <div style="display: flex; gap: 10px; justify-content: space-between;">
         <button class="button" onclick="shortenUrl()">Shorten URL</button>
         <button class="button" onclick="viewAllUrls()">View All Your URLs</button>
-    </div>
+      </div>
       <div id="message" class="message_url"></div>
       <div id="shortened-url-container" class="shortened-url-container"></div>
       <div id="qr-code-container" class="qr-code-container"></div>
@@ -148,6 +145,10 @@
     const viewAllUrls = () => {
       window.location.href = 'dashboard.php';
     };
+
+    if (!localStorage.getItem('authToken')) {
+      window.location.href = 'login.php';
+    }
 
     const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
 
@@ -189,10 +190,10 @@
           const shortenedLink = shortenedUrl;
 
           const linkElement = document.createElement('a');
-          linkElement.href = `http://bytely.xyz/${shortenUrl}`;
+          linkElement.href = `http://bytely.xyz/${shortenedUrl}`;
           linkElement.textContent = `bytely.xyz/${shortenedLink}`;
           linkElement.target = "_blank";
-          shortenedUrlContainer.innerHTML = ""; 
+          shortenedUrlContainer.innerHTML = "";
           shortenedUrlContainer.appendChild(linkElement);
 
           if (shortenedLink) {
