@@ -11,16 +11,11 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Nokora:wght@100;300;400;700;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-
 </head>
-
 <body>
     <?php
     include 'header.php';
-
     renderNavbar();
-
-
     ?>
 
     <div class="content-container">
@@ -32,9 +27,7 @@
                     <p class="text">All the products you need to build brand connections, manage links and QR Codes, and
                         connect with
                         audiences everywhere, in a single unified platform.</p>
-
                     <div class="buttonContainer" id="heroButtonContainer">
-
                     </div>
                 </div>
 
@@ -65,7 +58,7 @@
                                 <p class="card-paragraph">A comprehensive solution to help make every point of
                                     connection between your content
                                     and your audience more powerful.</p>
-                                <a href="urls.php"><button class="buttonClear button">Try it out</button></a>
+                                <a href="search.php"><button class="buttonClear button">Try it out</button></a>
                             </div>
 
                         </div>
@@ -115,7 +108,7 @@
                                     </svg> QR CODES</h3>
                                 <p class="card-paragraph">QR Code solutions for every customer, business and brand
                                     experience.</p>
-                                <a href="url.php"><button class="buttonClear button">Try it out</button></a>
+                                <a href="dashboard.php"><button class="buttonClear button">Try it out</button></a>
                             </div>
 
                         </div>
@@ -155,22 +148,17 @@
                                     </svg> Clicker Counter</h3>
                                 <p class="card-paragraph">Track your traffic, for a seamless user experience and testing
                                     ,use statistics and metricts for development</p>
-                                <a href="url.php"><button class="buttonClear button">Try it out</button></a>
+                                <a href="dashboard.php"><button class="buttonClear button">Try it out</button></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
-
         </div>
     </div>
 
     <?php
     include 'footer.php';
-
     renderFooter();
     ?>
 
@@ -178,10 +166,8 @@
         const heroButtonContainer = document.getElementById('heroButtonContainer');
 
         if (authToken) {
-            // If authToken exists, render 'Log Out' button
             heroButtonContainer.innerHTML = '<a href="index.php"><button>Get started for free</button></a>';
         } else {
-            // If no authToken exists, render 'Log In' button
             heroButtonContainer.innerHTML = ' <a href="register.php"><button class="buttonClear">Sign up for more</button ></a > ';
         }
 
@@ -192,7 +178,6 @@
             window.location.href = "login.php"
         }
     </script>
-
 </body>
 
 </html>
