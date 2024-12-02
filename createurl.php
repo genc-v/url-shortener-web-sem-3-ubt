@@ -43,10 +43,6 @@
       text-align: center;
     }
 
-    .containerUrl button {
-      width: auto;
-      height: auto;
-    }
 
     .inputUrl {
       width: 100%;
@@ -59,20 +55,19 @@
     }
 
     .button {
-      width: 100%;
-      padding: 12px;
+      width: 50%;
+      padding-top: 7.5px;
       background-color: var(--blue);
       border: none;
       color: white;
       font-size: 16px;
       cursor: pointer;
+      display: flex;
+      justify-content: center;
       border-radius: 8px;
       transition: background-color 0.3s;
     }
 
-    .button:hover {
-      background-color: gray;
-    }
 
     .message_url {
       margin-top: 10px;
@@ -202,7 +197,7 @@
           const shortenedLink = shortenedUrl;
 
           const linkElement = document.createElement('a');
-          linkElement.href = `http://bytely.xyz/${shortenUrl}`;
+          linkElement.href = `http://bytely.xyz/${shortenedUrl}`;
           linkElement.textContent = `bytely.xyz/${shortenedLink}`;
           linkElement.target = "_blank";
           shortenedUrlContainer.innerHTML = "";

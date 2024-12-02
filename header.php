@@ -76,9 +76,9 @@ function renderNavbar()
             z-index: 2;
             background: var(--gray);
             opacity: 0.6;
-            transition: 0.5s;
             transform: translate(-10vw, -10vw);
             display: none;
+
         }
 
         .navbar-container {
