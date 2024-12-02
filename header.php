@@ -154,12 +154,18 @@ function renderNavbar()
         }
 
         @media (max-width: 736px) {
+
+
+            .current::before {
+                width: 0;
+            }
+
             #authButtonContainer {
                 padding: 15px;
                 scale: 0.8;
                 position: fixed;
                 right: -60vw;
-                top: 232.5px;
+                top: 250px;
                 transition: 0.5s;
                 z-index: 3;
             }
@@ -170,6 +176,8 @@ function renderNavbar()
                 width: 120px;
                 font-size: 2.75rem;
                 font-weight: 600;
+                background: transparent;
+
             }
 
             .hamburgerIcon {
@@ -182,7 +190,7 @@ function renderNavbar()
             }
 
             .navbar {
-                width: 100%;
+                max-width: 100%;
                 overflow-x: hidden;
                 padding: 0;
             }
