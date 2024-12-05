@@ -42,7 +42,7 @@ public class URLSearchController : ControllerBase
         if (admin)
         {
             var resultsAdmin = _context.Urls
-                .Where(url => url.OriginalUrl.Contains(UrlName.ToLower()))
+                .Where(url => url.OriginalUrl.Contains(UrlName))
                 .ToList()
                 .Select(url => new UrlResponseDto()
                 {
@@ -64,7 +64,7 @@ public class URLSearchController : ControllerBase
 
         // Search for URLs belonging to the authenticated user
         var results = _context.Urls
-            .Where(url => url.UserId == userId && url.OriginalUrl.Contains(UrlName.ToLower()))
+            .Where(url => url.UserId == userId && url.OriginalUrl.Contains(UrlName))
             .ToList()
             .Select(url => new UrlResponseDto()
             {

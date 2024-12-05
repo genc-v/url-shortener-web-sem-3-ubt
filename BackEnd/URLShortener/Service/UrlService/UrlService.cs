@@ -52,7 +52,7 @@ namespace URLShortener.Service.Url
 
             var newUrl = new URL()
             {
-                OriginalUrl = originalUrl.ToLower(),
+                OriginalUrl = originalUrl,
                 ShortUrl = GenerateShortUrl(5),
                 NrOfClicks = 0,
                 UserId = userId,

@@ -55,7 +55,7 @@ builder.Services.AddCors(options =>
         policy.WithOrigins(allowedOrigins)
               .AllowAnyMethod()
               .AllowAnyHeader()
-              .AllowCredentials(); // Only use this if credentials (e.g., cookies or Authorization headers) are needed
+              .AllowCredentials();
     });
 });
 
@@ -70,12 +70,25 @@ builder.Services.AddScoped<IUserService, UserService>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline
-if (app.Environment.IsDevelopment())
+// Run database migrations during startup
+using (var scope = app.Services.CreateScope())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Your API V1"));
+    var services = scope.ServiceProvider;
+    try
+    {
+        var dbContext = services.GetRequiredService<UrlShortenerDbContext>();
+        dbContext.Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        // Log any errors during migration
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred while migrating the database.");
+    }
 }
+
+app.UseSwagger();
+app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Your API V1"));
 
 app.UseHttpsRedirection();
 app.UseCors("DefaultPolicy");
