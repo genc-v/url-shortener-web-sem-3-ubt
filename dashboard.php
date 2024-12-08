@@ -113,29 +113,16 @@
       try {
         const response = await fetch(`http://34.76.194.134:5284/Urls/${token}?pageNumber=${pageNumber}&pageSize=${pageSize}`);
         const data = await response.json();
-        urlData = data;
+        urlData = data.urls;
         displayUrls(urlData);
-        updatePaginationControls();
+        updatePaginationControls(data.totalPages);
       } catch (error) {
         console.error('Error fetching URLs:', error);
       }
     };
 
-    const fetchTotalPages = async (pageSize) => {
-      try {
-        const response = await fetch(`http://34.76.194.134:5284/api/User/totalPages/${token}?pageSize=${pageSize}`);
-        const data = await response.json();
-        return data.totalPages;
-      } catch (error) {
-        console.error('Error fetching total pages:', error);
-        return 0;
-      }
-    };
-
-    const updatePaginationControls = async () => {
-      const totalPages = await fetchTotalPages(pageSize);
+    const updatePaginationControls = (totalPages) => {
       const paginationContainer = document.getElementById('pagination-controls');
-
       paginationContainer.innerHTML = '';
 
       for (let i = 1; i <= totalPages; i++) {
