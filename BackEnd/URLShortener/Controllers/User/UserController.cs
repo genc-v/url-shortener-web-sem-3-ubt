@@ -47,19 +47,32 @@ namespace URLShortener.Controllers
         }
 
         [HttpGet("/Urls/{token}")]
-        public IActionResult GetUserWithUrls(string token)
+        public IActionResult GetUserWithUrls(string token, int pageNumber, int pageSize)
         {
             int userId = Authentication.GetUserIdFromToken(token);
-            var urls = _userService.GetUserWithUrls(userId);
-            if (urls == null)
+            var userUrls = _userService.GetUserWithUrls(userId);
+            if (userUrls == null || userUrls.Urls == null)
             {
-               return NotFound("No URLs found for the user");
+                return NotFound("No URLs found for the user");
             }
-            return Ok(urls);
- 
-
+            var pagedUrls = userUrls.Urls.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            return Ok(pagedUrls);
         }
 
+        [HttpGet("totalPages/{token}")]
+        public IActionResult GetTotalPages(string token, int pageSize)
+        {
+            int userId = Authentication.GetUserIdFromToken(token);
+            var userUrls = _userService.GetUserWithUrls(userId);
+            if (userUrls == null || userUrls.Urls == null)
+            {
+                return NotFound("No URLs found for the user");
+            }
+            var totalUrls = userUrls.Urls.Count();
+            var totalPages = (int)Math.Ceiling((double)totalUrls / pageSize);
+            return Ok(totalPages);
+        }
+        
         [HttpPost("login")]
         [AllowAnonymous]
         public IActionResult Login([FromBody] LoginModel request)

@@ -27,23 +27,14 @@ namespace URLShortener.Controllers
 
 
         [HttpGet]
-        public IActionResult GetUrls(int pageNumber, int pageSize)
+        public IActionResult GetUrls()
         {
             var allUrls = _urlService.GetAllUrls();
             if (allUrls.Any())
             {
-                var pagedUrls = allUrls.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
-                return Ok(pagedUrls);
+                return Ok(allUrls);
             }
             return NotFound("Database is empty");
-        }
-
-        [HttpGet("totalPages")]
-        public IActionResult GetTotalPages(int pageSize)
-        {
-            var totalUrls = _urlService.GetAllUrls().Count();
-            var totalPages = (int)Math.Ceiling((double)totalUrls / pageSize);
-            return Ok(totalPages);
         }
 
         [HttpGet("{id}")]
