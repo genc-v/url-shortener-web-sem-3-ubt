@@ -68,20 +68,6 @@ namespace URLShortener.Controllers
 
             return Ok(response);
         }
-
-        // [HttpGet("totalPages/{token}")]
-        // public IActionResult GetTotalPages(string token, int pageSize)
-        // {
-        //     int userId = Authentication.GetUserIdFromToken(token);
-        //     var userUrls = _userService.GetUserWithUrls(userId);
-        //     if (userUrls == null || userUrls.Urls == null)
-        //     {
-        //         return NotFound("No URLs found for the user");
-        //     }
-        //     var totalUrls = userUrls.Urls.Count();
-        //     var totalPages = (int)Math.Ceiling((double)totalUrls / pageSize);
-        //     return Ok(totalPages);
-        // }
         
         [HttpPost("login")]
         [AllowAnonymous]
