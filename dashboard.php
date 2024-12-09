@@ -147,14 +147,12 @@
       const tableBody = document.getElementById('url-table-body');
       const urlListContainer = document.querySelector('.urlList-container');
 
-      // Clear the table body content
+
       tableBody.innerHTML = '';
 
       if (urls.length === 0) {
-        // Hide the table if there are no URLs
         tableContainer.style.display = 'none';
 
-        // Show a message and button
         urlListContainer.innerHTML = `
       <div class="empty-message">
         <h3>You don't have any links yet!</h3>
@@ -162,10 +160,8 @@
       </div>
     `;
       } else {
-        // Show the table
         tableContainer.style.display = 'block';
 
-        // Populate the table with URLs
         urls.forEach((url) => {
           const faviconUrl = fetchFavicon(url.originalUrl);
           const row = document.createElement('tr');
@@ -242,7 +238,6 @@
 
     const renderPaginationButtons = (totalPages) => {
       const paginationControls = document.getElementById('pagination-numbers');
-      // Clear only the dynamically generated buttons
       const existingButtons = paginationControls.querySelectorAll('.pagination-button.dynamic');
       existingButtons.forEach(button => button.remove());
 
@@ -264,14 +259,12 @@
         paginationControls.appendChild(button);
       };
 
-      const pageRange = 2; // Number of pages to show before and after the active page
+      const pageRange = 2;
       const visiblePages = new Set();
 
-      // Always include first and last page
       visiblePages.add(1);
       visiblePages.add(totalPages);
 
-      // Add active page and its range
       for (let i = Math.max(1, pageNumber - pageRange); i <= Math.min(totalPages, pageNumber + pageRange); i++) {
         visiblePages.add(i);
       }
@@ -280,7 +273,7 @@
       for (let i = 1; i <= totalPages; i++) {
         if (visiblePages.has(i)) {
           if (i > lastPageAdded + 1) {
-            addButton('...', false, true); // Add ellipsis if there's a gap
+            addButton('...', false, true);
           }
           addButton(i, i === pageNumber);
           lastPageAdded = i;
@@ -362,14 +355,14 @@
           });
           if (response.ok) {
             showToast('URL deleted successfully!');
-            fetchUrls(pageNumber, pageSize); // Refresh the list
+            fetchUrls(pageNumber, pageSize);
           } else {
             showToast('Error deleting URL', 'error');
           }
         } catch (error) {
           showToast('Error deleting URL', 'error');
         }
-        closeDeleteModal(); // Close modal after action
+        closeDeleteModal();
       }
     };
 
@@ -397,14 +390,14 @@
           });
           if (response.ok) {
             showToast('Description updated successfully!');
-            fetchUrls(pageNumber, pageSize); // Refresh the list
+            fetchUrls(pageNumber, pageSize);
           } else {
             showToast('Error updating description', 'error');
           }
         } catch (error) {
           showToast('Error updating description', 'error');
         }
-        closeEditModal(); // Close the modal after saving
+        closeEditModal();
       }
     };
 
@@ -417,10 +410,10 @@
       const toastContainer = document.getElementById('toast-container');
       toastContainer.appendChild(toast);
 
-      // Remove the toast after 3 seconds
+
       setTimeout(() => {
         toast.remove();
-      }, 3000); // Remove the toast after 3 seconds
+      }, 3000);
     };
 
 

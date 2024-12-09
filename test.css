@@ -369,10 +369,6 @@ select {
     margin-bottom: 20px;
   }
 
-  label {
-    /* font-size: 1rem; */
-  }
-
   select {
     border-radius: 5px;
     text-align: center;
