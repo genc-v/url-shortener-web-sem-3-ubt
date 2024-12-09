@@ -362,7 +362,7 @@
           });
           if (response.ok) {
             showToast('URL deleted successfully!');
-            fetchUrls(); // Refresh the list
+            fetchUrls(pageNumber, pageSize); // Refresh the list
           } else {
             showToast('Error deleting URL', 'error');
           }
@@ -397,7 +397,7 @@
           });
           if (response.ok) {
             showToast('Description updated successfully!');
-            fetchUrls(); // Refresh the list
+            fetchUrls(pageNumber, pageSize); // Refresh the list
           } else {
             showToast('Error updating description', 'error');
           }
