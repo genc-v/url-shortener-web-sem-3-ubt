@@ -41,6 +41,12 @@
     </div>
   </div>
 
+  <div id="pagination-controls" class="pagination">
+    <button onclick="goToPreviousPage()" class="pagination-button"><<</button>
+    <div id="pagination-numbers"></div>
+    <button onclick="goToNextPage()" class="pagination-button">>></button>
+  </div>
+
   <div class="modal-overlay" id="modal-overlay"></div>
   <div class="modal" id="qr-modal">
     <h3>QR Code</h3>
@@ -111,15 +117,23 @@
       dateCreated: 'asc',
       clicks: 'asc'
     };
+    let pageNumber = 1;
+    let pageSize = 10;
+    let totalPages = 0;
 
-    const fetchUrls = async () => {
+    const fetchUrls = async (page = 1, size = 10) => {
       try {
-        const response = await fetch(`http://34.76.194.134:5284/Urls/${token}`);
+        const response = await fetch(`http://34.76.194.134:5284/urls/${token}?pageNumber=${page}&pageSize=${size}`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
         const data = await response.json();
         urlData = data.urls;
+        totalPages = data.totalPages;
         displayUrls(urlData);
+        renderPaginationButtons(totalPages);
       } catch (error) {
-        return;
+        console.error("Error fetching URLs:", error);
       }
     };
 
@@ -226,7 +240,68 @@
       }
     };
 
+    const renderPaginationButtons = (totalPages) => {
+      const paginationControls = document.getElementById('pagination-numbers');
+      // Clear only the dynamically generated buttons
+      const existingButtons = paginationControls.querySelectorAll('.pagination-button.dynamic');
+      existingButtons.forEach(button => button.remove());
 
+      const addButton = (text, isActive = false, isEllipsis = false) => {
+        const button = document.createElement('button');
+        button.textContent = text;
+        button.classList.add('pagination-button', 'dynamic');
+        if (isEllipsis) {
+          button.disabled = true;
+          button.classList.add('ellipsis');
+        } else if (isActive) {
+          button.classList.add('active');
+        } else {
+          button.onclick = () => {
+            pageNumber = parseInt(text);
+            fetchUrls(pageNumber, pageSize);
+          };
+        }
+        paginationControls.appendChild(button);
+      };
+
+      const pageRange = 2; // Number of pages to show before and after the active page
+      const visiblePages = new Set();
+
+      // Always include first and last page
+      visiblePages.add(1);
+      visiblePages.add(totalPages);
+
+      // Add active page and its range
+      for (let i = Math.max(1, pageNumber - pageRange); i <= Math.min(totalPages, pageNumber + pageRange); i++) {
+        visiblePages.add(i);
+      }
+
+      let lastPageAdded = 0;
+      for (let i = 1; i <= totalPages; i++) {
+        if (visiblePages.has(i)) {
+          if (i > lastPageAdded + 1) {
+            addButton('...', false, true); // Add ellipsis if there's a gap
+          }
+          addButton(i, i === pageNumber);
+          lastPageAdded = i;
+        }
+      }
+    };
+
+
+    const goToNextPage = () => {
+      if (pageNumer < totalPages) {
+        pageNumber++;
+        fetchUrls(pageNumber, pageSize);
+      }
+    };
+
+    const goToPreviousPage = () => {
+      if (pageNumber > 1) {
+        pageNumber--;
+        fetchUrls(pageNumber, pageSize);
+      }
+    };
 
     const openModal = (id) => {
       const modal = document.getElementById('qr-modal');
@@ -388,9 +463,7 @@
       displayUrls(sortedData);
     };
 
-    window.onload = () => {
-      fetchUrls();
-    };
+    fetchUrls(pageNumber, pageSize);
   </script>
 </body>
 

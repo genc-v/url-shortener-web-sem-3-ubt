@@ -12,9 +12,6 @@ RUN a2enmod rewrite
 # Copy the custom Apache configuration file
 COPY apache.conf /etc/apache2/sites-available/000-default.conf
 
-# Reload Apache to apply the configuration
-RUN service apache2 reload
-
 # Set the working directory inside the container
 WORKDIR /var/www/html
 

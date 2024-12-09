@@ -270,6 +270,24 @@ select {
   text-align: center;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.pagination-button {
+  scale: 0.9;
+  background-color: white;
+  color: var(--blue);
+  width: 50px;
+}
+
+.active {
+  text-decoration: underline;
+  font-weight: 600;
+}
+
 @media screen and (max-width: 1110px) {
   .urlList-container {
     padding: 10px;
@@ -358,5 +376,9 @@ select {
   select {
     border-radius: 5px;
     text-align: center;
+  }
+
+  .pagination-button {
+    width: 33px;
   }
 }
