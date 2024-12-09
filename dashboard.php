@@ -41,6 +41,12 @@
     </div>
   </div>
 
+  <div id="pagination-controls" class="pagination">
+    <button onclick="goToPreviousPage()" class="pagination-button"><<</button>
+    <div id="pagination-numbers"></div>
+    <button onclick="goToNextPage()" class="pagination-button">>></button>
+  </div>
+
   <div class="modal-overlay" id="modal-overlay"></div>
   <div class="modal" id="qr-modal">
     <h3>QR Code</h3>
@@ -111,15 +117,23 @@
       dateCreated: 'asc',
       clicks: 'asc'
     };
+    let pageNumber = 1;
+    let pageSize = 10;
+    let totalPages = 0;
 
-    const fetchUrls = async () => {
+    const fetchUrls = async (page = 1, size = 10) => {
       try {
-        const response = await fetch(`http://34.76.194.134:5284/Urls/${token}`);
+        const response = await fetch(`http://34.76.194.134:5284/urls/${token}?pageNumber=${page}&pageSize=${size}`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
         const data = await response.json();
         urlData = data.urls;
+        totalPages = data.totalPages;
         displayUrls(urlData);
+        renderPaginationButtons(totalPages);
       } catch (error) {
-        return;
+        console.error("Error fetching URLs:", error);
       }
     };
 
@@ -133,14 +147,12 @@
       const tableBody = document.getElementById('url-table-body');
       const urlListContainer = document.querySelector('.urlList-container');
 
-      // Clear the table body content
+
       tableBody.innerHTML = '';
 
       if (urls.length === 0) {
-        // Hide the table if there are no URLs
         tableContainer.style.display = 'none';
 
-        // Show a message and button
         urlListContainer.innerHTML = `
       <div class="empty-message">
         <h3>You don't have any links yet!</h3>
@@ -148,10 +160,8 @@
       </div>
     `;
       } else {
-        // Show the table
         tableContainer.style.display = 'block';
 
-        // Populate the table with URLs
         urls.forEach((url) => {
           const faviconUrl = fetchFavicon(url.originalUrl);
           const row = document.createElement('tr');
@@ -226,7 +236,65 @@
       }
     };
 
+    const renderPaginationButtons = (totalPages) => {
+      const paginationControls = document.getElementById('pagination-numbers');
+      const existingButtons = paginationControls.querySelectorAll('.pagination-button.dynamic');
+      existingButtons.forEach(button => button.remove());
 
+      const addButton = (text, isActive = false, isEllipsis = false) => {
+        const button = document.createElement('button');
+        button.textContent = text;
+        button.classList.add('pagination-button', 'dynamic');
+        if (isEllipsis) {
+          button.disabled = true;
+          button.classList.add('ellipsis');
+        } else if (isActive) {
+          button.classList.add('active');
+        } else {
+          button.onclick = () => {
+            pageNumber = parseInt(text);
+            fetchUrls(pageNumber, pageSize);
+          };
+        }
+        paginationControls.appendChild(button);
+      };
+
+      const pageRange = 2;
+      const visiblePages = new Set();
+
+      visiblePages.add(1);
+      visiblePages.add(totalPages);
+
+      for (let i = Math.max(1, pageNumber - pageRange); i <= Math.min(totalPages, pageNumber + pageRange); i++) {
+        visiblePages.add(i);
+      }
+
+      let lastPageAdded = 0;
+      for (let i = 1; i <= totalPages; i++) {
+        if (visiblePages.has(i)) {
+          if (i > lastPageAdded + 1) {
+            addButton('...', false, true);
+          }
+          addButton(i, i === pageNumber);
+          lastPageAdded = i;
+        }
+      }
+    };
+
+
+    const goToNextPage = () => {
+      if (pageNumer < totalPages) {
+        pageNumber++;
+        fetchUrls(pageNumber, pageSize);
+      }
+    };
+
+    const goToPreviousPage = () => {
+      if (pageNumber > 1) {
+        pageNumber--;
+        fetchUrls(pageNumber, pageSize);
+      }
+    };
 
     const openModal = (id) => {
       const modal = document.getElementById('qr-modal');
@@ -287,14 +355,14 @@
           });
           if (response.ok) {
             showToast('URL deleted successfully!');
-            fetchUrls(); // Refresh the list
+            fetchUrls(pageNumber, pageSize);
           } else {
             showToast('Error deleting URL', 'error');
           }
         } catch (error) {
           showToast('Error deleting URL', 'error');
         }
-        closeDeleteModal(); // Close modal after action
+        closeDeleteModal();
       }
     };
 
@@ -322,14 +390,14 @@
           });
           if (response.ok) {
             showToast('Description updated successfully!');
-            fetchUrls(); // Refresh the list
+            fetchUrls(pageNumber, pageSize);
           } else {
             showToast('Error updating description', 'error');
           }
         } catch (error) {
           showToast('Error updating description', 'error');
         }
-        closeEditModal(); // Close the modal after saving
+        closeEditModal();
       }
     };
 
@@ -342,10 +410,10 @@
       const toastContainer = document.getElementById('toast-container');
       toastContainer.appendChild(toast);
 
-      // Remove the toast after 3 seconds
+
       setTimeout(() => {
         toast.remove();
-      }, 3000); // Remove the toast after 3 seconds
+      }, 3000);
     };
 
 
@@ -388,9 +456,7 @@
       displayUrls(sortedData);
     };
 
-    window.onload = () => {
-      fetchUrls();
-    };
+    fetchUrls(pageNumber, pageSize);
   </script>
 </body>
 

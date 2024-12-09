@@ -5,6 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <meta name="description" content="UBT URL Shortener is the easiest way to create short and shareable links. Fast, secure, and reliable URL shortening for all your needs.">
+    <meta name="keywords" content="URL shortener, UBT, link shortening, custom links, short URLs">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "UBT URL Shortener",
+      "url": "http://bytely.xyz",
+      "description": "A fast and secure tool to shorten URLs for UBT students and beyond."
+    }
+    </script>
     <link rel="stylesheet" href="dashboard.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
