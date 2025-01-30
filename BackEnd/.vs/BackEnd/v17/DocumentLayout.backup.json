@@ -1,0 +1,371 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|c:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\backend\\urlshortener\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|solutionrelative:urlshortener\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|c:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\backend\\urlshortener\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|solutionrelative:urlshortener\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|c:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\backend\\urlshortener\\models\\url.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|solutionrelative:urlshortener\\models\\url.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|c:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\backend\\urlshortener\\models\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|solutionrelative:urlshortener\\models\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|c:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\backend\\urlshortener\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|solutionrelative:urlshortener\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|c:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\backend\\urlshortener\\controllers\\url\\urlcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|solutionrelative:urlshortener\\controllers\\url\\urlcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|c:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\backend\\urlshortener\\dtos\\url\\urlresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|solutionrelative:urlshortener\\dtos\\url\\urlresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|c:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\backend\\urlshortener\\dtos\\signupmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|solutionrelative:urlshortener\\dtos\\signupmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|c:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\backend\\urlshortener\\dtos\\loginmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|solutionrelative:urlshortener\\dtos\\loginmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|c:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\backend\\urlshortener\\dtos\\user\\userurls.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|solutionrelative:urlshortener\\dtos\\user\\userurls.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|c:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\backend\\urlshortener\\dtos\\user\\userupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|solutionrelative:urlshortener\\dtos\\user\\userupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|c:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\backend\\urlshortener\\dtos\\url\\urlupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|solutionrelative:urlshortener\\dtos\\url\\urlupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|c:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\backend\\urlshortener\\service\\userservice\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|solutionrelative:urlshortener\\service\\userservice\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|c:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\backend\\urlshortener\\controllers\\user\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|solutionrelative:urlshortener\\controllers\\user\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|c:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\backend\\urlshortener\\controllers\\url\\urlsearchcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|solutionrelative:urlshortener\\controllers\\url\\urlsearchcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|c:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\backend\\urlshortener\\service\\authentication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|solutionrelative:urlshortener\\service\\authentication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|c:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\backend\\urlshortener\\service\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|solutionrelative:urlshortener\\service\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|c:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\backend\\urlshortener\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|solutionrelative:urlshortener\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|c:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\backend\\urlshortener\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|solutionrelative:urlshortener\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|c:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\backend\\urlshortener\\urlshortener.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{7A861670-CE10-429B-8D5C-24660C36D253}|URLShortener\\URLShortener.csproj|solutionrelative:urlshortener\\urlshortener.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00F5BDE8-A783-47F3-9E5A-1885EA7E7ED2}|docker-compose.dcproj|c:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\backend\\docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{00F5BDE8-A783-47F3-9E5A-1885EA7E7ED2}|docker-compose.dcproj|solutionrelative:docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 12,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "URL.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\Models\\URL.cs",
+              "RelativeDocumentMoniker": "URLShortener\\Models\\URL.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\Models\\URL.cs*",
+              "RelativeToolTip": "URLShortener\\Models\\URL.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T11:22:27.699Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\Models\\User.cs",
+              "RelativeDocumentMoniker": "URLShortener\\Models\\User.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\Models\\User.cs",
+              "RelativeToolTip": "URLShortener\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T11:22:10.441Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UrlController.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\Controllers\\URL\\UrlController.cs",
+              "RelativeDocumentMoniker": "URLShortener\\Controllers\\URL\\UrlController.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\Controllers\\URL\\UrlController.cs",
+              "RelativeToolTip": "URLShortener\\Controllers\\URL\\UrlController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T11:19:00.126Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "SignUpModel.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\DTOs\\SignUpModel.cs",
+              "RelativeDocumentMoniker": "URLShortener\\DTOs\\SignUpModel.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\DTOs\\SignUpModel.cs",
+              "RelativeToolTip": "URLShortener\\DTOs\\SignUpModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T11:18:49.618Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "LoginModel.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\DTOs\\LoginModel.cs",
+              "RelativeDocumentMoniker": "URLShortener\\DTOs\\LoginModel.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\DTOs\\LoginModel.cs",
+              "RelativeToolTip": "URLShortener\\DTOs\\LoginModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T11:18:48.815Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserUrls.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\DTOs\\User\\UserUrls.cs",
+              "RelativeDocumentMoniker": "URLShortener\\DTOs\\User\\UserUrls.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\DTOs\\User\\UserUrls.cs",
+              "RelativeToolTip": "URLShortener\\DTOs\\User\\UserUrls.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T11:18:46.183Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UserUpdate.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\DTOs\\User\\UserUpdate.cs",
+              "RelativeDocumentMoniker": "URLShortener\\DTOs\\User\\UserUpdate.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\DTOs\\User\\UserUpdate.cs",
+              "RelativeToolTip": "URLShortener\\DTOs\\User\\UserUpdate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T11:18:44.106Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "UrlUpdate.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\DTOs\\URL\\UrlUpdate.cs",
+              "RelativeDocumentMoniker": "URLShortener\\DTOs\\URL\\UrlUpdate.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\DTOs\\URL\\UrlUpdate.cs",
+              "RelativeToolTip": "URLShortener\\DTOs\\URL\\UrlUpdate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T11:18:41.706Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UrlResponseDto.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\DTOs\\URL\\UrlResponseDto.cs",
+              "RelativeDocumentMoniker": "URLShortener\\DTOs\\URL\\UrlResponseDto.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\DTOs\\URL\\UrlResponseDto.cs",
+              "RelativeToolTip": "URLShortener\\DTOs\\URL\\UrlResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T11:18:40.783Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\Service\\UserService\\UserService.cs",
+              "RelativeDocumentMoniker": "URLShortener\\Service\\UserService\\UserService.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\Service\\UserService\\UserService.cs",
+              "RelativeToolTip": "URLShortener\\Service\\UserService\\UserService.cs",
+              "ViewState": "AgIAAEMAAAAAAAAAAIA5wFIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T11:16:54.742Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Role.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\Models\\Role.cs",
+              "RelativeDocumentMoniker": "URLShortener\\Models\\Role.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\Models\\Role.cs",
+              "RelativeToolTip": "URLShortener\\Models\\Role.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T11:16:51.444Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\Program.cs",
+              "RelativeDocumentMoniker": "URLShortener\\Program.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\Program.cs",
+              "RelativeToolTip": "URLShortener\\Program.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAApwCcAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-11T17:10:13.797Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\appsettings.json",
+              "RelativeDocumentMoniker": "URLShortener\\appsettings.json",
+              "ToolTip": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\appsettings.json",
+              "RelativeToolTip": "URLShortener\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-11-11T17:11:21.04Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\Controllers\\User\\UserController.cs",
+              "RelativeDocumentMoniker": "URLShortener\\Controllers\\User\\UserController.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\Controllers\\User\\UserController.cs",
+              "RelativeToolTip": "URLShortener\\Controllers\\User\\UserController.cs",
+              "ViewState": "AgIAAHkAAAAAAAAAAAApwH8AAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T11:16:50.246Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "UrlSearchController.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\Controllers\\URL\\UrlSearchController.cs",
+              "RelativeDocumentMoniker": "URLShortener\\Controllers\\URL\\UrlSearchController.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\Controllers\\URL\\UrlSearchController.cs",
+              "RelativeToolTip": "URLShortener\\Controllers\\URL\\UrlSearchController.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAApwDkAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T11:16:47.113Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "URLShortener",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\URLShortener.csproj",
+              "RelativeDocumentMoniker": "URLShortener\\URLShortener.csproj",
+              "ToolTip": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\URLShortener.csproj",
+              "RelativeToolTip": "URLShortener\\URLShortener.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-11-15T11:10:41.162Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "URLShortener\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\Properties\\launchSettings.json",
+              "RelativeToolTip": "URLShortener\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-11-15T11:10:41.666Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "TokenService.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\Service\\TokenService.cs",
+              "RelativeDocumentMoniker": "URLShortener\\Service\\TokenService.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\Service\\TokenService.cs",
+              "RelativeToolTip": "URLShortener\\Service\\TokenService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T14:33:39.371Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Authentication.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\Service\\Authentication.cs",
+              "RelativeDocumentMoniker": "URLShortener\\Service\\Authentication.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\Service\\Authentication.cs",
+              "RelativeToolTip": "URLShortener\\Service\\Authentication.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAgAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T14:33:21.283Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "docker-compose.yml",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\docker-compose.yml",
+              "RelativeDocumentMoniker": "docker-compose.yml",
+              "ToolTip": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\docker-compose.yml",
+              "RelativeToolTip": "docker-compose.yml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2024-11-12T12:04:52.567Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\Dockerfile",
+              "RelativeDocumentMoniker": "URLShortener\\Dockerfile",
+              "ToolTip": "C:\\xampp\\htdocs\\url-shortener-web-sem-3-ubt\\BackEnd\\URLShortener\\Dockerfile",
+              "RelativeToolTip": "URLShortener\\Dockerfile",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-11-12T11:44:06.824Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
