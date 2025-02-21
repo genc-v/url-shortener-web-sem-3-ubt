@@ -25,7 +25,7 @@ jobs:
       - name: Deploy via SSH
         run: |
           ssh tavani@$SERVER_IP "
-            cd /path/to/your/project || exit
+            cd cd url-shortener-web-sem-3-ubt/ || exit
             git pull origin main
             docker-compose down
             docker-compose up -d
