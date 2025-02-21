@@ -24,7 +24,7 @@ jobs:
 
       - name: Deploy via SSH
         run: |
-          ssh casaos@$SERVER_IP "
+          ssh tavani@$SERVER_IP "
             cd /path/to/your/project || exit
             git pull origin main
             docker-compose down
