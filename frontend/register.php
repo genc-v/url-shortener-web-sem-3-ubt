@@ -100,7 +100,8 @@
 
             // Validate input
             const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            const passwordPattern = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d!@#$%^&*()]{8,}$/;
+            const passwordPattern = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+[\]{}|;:,.<>?])(?=.{8,})/;
+
 
             if (!emailPattern.test(email)) {
                 messageElement.textContent = 'Invalid email format.';
