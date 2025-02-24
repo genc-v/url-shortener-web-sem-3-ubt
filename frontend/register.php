@@ -1,67 +1,10 @@
-<?php
-session_start();
-$error = '';
-$success = '';
-
-echo "<script>
-   
-    if (localStorage.getItem('authToken')) {
-        
-        window.location.href = 'dashboard.php'; 
-    }
-</script>";
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = $_POST['email'] ?? '';
-    $password = $_POST['password'] ?? '';
-    $fullName = $_POST['fullName'] ?? '';
-
-    $emailPattern = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
-    if (!preg_match($emailPattern, $email)) {
-        $error = "Invalid email format";
-    }
-
-    $passwordPattern = '/^(?=.*[A-Z])(?=.*\d)[A-Za-z\d!@#$%^&*()]{8,}$/';
-    if (empty($error) && !preg_match($passwordPattern, $password)) {
-        $error = "Password must be at least 8 characters, One uppercase letter and one number.";
-    }
-
-    if (empty($error)) {
-        $url = "http://34.76.194.134:5284/api/User/signup";
-        $data = json_encode(array(
-            "email" => $email,
-            "fullName" => $fullName,
-            "password" => $password
-        ));
-
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-
-        $response = curl_exec($ch);
-        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
-
-        if ($http_code == 200) {
-            $success = 'Registration successful! Redirecting to login.';
-            header("Location: login.php");
-            exit;
-        } else {
-            $error = 'Error during registration: ' . $response;
-        }
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Login</title>
     <meta name="description" content="UBT URL Shortener is the easiest way to create short and shareable links. Fast, secure, and reliable URL shortening for all your needs.">
     <meta name="keywords" content="URL shortener, UBT, link shortening, custom links, short URLs">
     <script type="application/ld+json">
@@ -83,36 +26,57 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
-    <div class="register">
 
-        <form class="register-form" id="registerForm" method="POST">
-            <h2 class="">Create your account</h2>
-            <p class="">Already have an account? <a href="login.php" class="">Login Here!</a></p>
+    <script>
+        if (localStorage.getItem('authToken')) {
+            window.location.href = 'index.php';
+        }
+
+        async function handleLogin(event) {
+            event.preventDefault();
+
+            const email = document.querySelector('input[name="email"]').value;
+            const password = document.querySelector('input[name="password"]').value;
+
+            const response = await fetch('http://34.76.194.134:5284/api/User/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password })
+            });
+
+            if (response.ok) {
+                const token = await response.text();
+                localStorage.setItem('authToken', token);
+                window.location.href = 'index.php';
+            } else {
+                document.getElementById('error-message').innerText = 'There was an error with the login process. Please try again.';
+            }
+        }
+    </script>
+
+    <div class="register">
+        <form class="register-form" id="registerForm" onsubmit="handleLogin(event)">
+            <h2 class="">Log in and start sharing</h2>
+            <p class="pt-6">Dont have an account? <a href="register.php" class="">Sign Up here!</a></p>
             <div class="form-group">
-                <label>Full Name</label>
-                <input type="text" name="fullName" placeholder="Your Full Name" required>
-            </div>
-            <div class="form-group">
-                <label>Email</label>
+                <label><b>Email</b></label>
                 <input type="text" name="email" placeholder="Email address" required>
             </div>
             <div class="form-group">
-                <label>Password</label>
+                <label><b>Password</b></label>
                 <input type="password" name="password" placeholder="Password" required>
             </div>
-            <?php if ($error): ?>
-                <div class="message"><?php echo $error; ?></div>
-            <?php endif; ?>
-            <?php if ($success): ?>
-                <div class="message"><?php echo $success; ?></div>
-            <?php endif; ?>
-            <button type="submit" class="">Register</button>
-
+            <div class="message" id="error-message"></div>
+            <button type="submit" class="">Log In</button>
         </form>
     </div>
-    <div class="secondary-container"><img src="assets/images/png/RegisterImage.png" alt="">
-        <p>Analyze your links and QR Codes as easily as creating them</p>
+    <div class="secondary-container">
+        <img src="assets/images/png/loginImage.png" alt="">
+        <p>Power your links, QR Codes, and landing pages with Bytely's Connections Platform.</p>
     </div>
+
 </body>
 
 </html>
