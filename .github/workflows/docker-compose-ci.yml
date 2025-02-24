@@ -1,0 +1,19 @@
+name: Docker Compose CI
+
+on:
+  push:
+    branches:
+      - main  # Change this to your default branch if it's not 'main'
+
+jobs:
+  deploy:
+    runs-on: self-hosted  # Use self-hosted runner
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run Docker Compose
+        run: |
+          docker-compose down
+          docker-compose up -d
