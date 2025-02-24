@@ -1,43 +1,3 @@
-<?php
-session_start();
-$error = '';
-$results = [];
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['urlName'], $_POST['authToken'])) {
-    $urlName = $_POST['urlName'];
-    $authToken = $_POST['authToken'];
-
-    $apiUrl = "http://34.76.194.134:5284/api/search";
-
-    $queryParams = http_build_query([
-        'UrlName' => $urlName,
-        'token' => $authToken
-    ]);
-
-    $fullUrl = $apiUrl . '?' . $queryParams;
-
-    $ch = curl_init($fullUrl);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        "Accept: application/json",
-        "Content-Type: application/json"
-    ]);
-
-    $response = curl_exec($ch);
-    $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
-
-    if ($http_code == 200) {
-        $results = json_decode($response, true);
-    } elseif ($http_code == 404) {
-        $error = "No URLs found for this user.";
-    } else {
-        $error = "Failed to fetch results. Please try again later.";
-    }
-}
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,6 +22,90 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['urlName'], $_POST['au
             if (authToken) {
                 document.getElementById('authToken').value = authToken;
             }
+
+            const searchForm = document.querySelector('.search-form');
+            searchForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const urlName = document.getElementById('urlName').value;
+                const authToken = document.getElementById('authToken').value;
+
+                const apiUrl = "http://localhost:5001/api/search";
+                const queryParams = new URLSearchParams({
+                    'UrlName': urlName,
+                    'token': authToken
+                });
+
+                fetch(`${apiUrl}?${queryParams}`, {
+                    method: 'GET',
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-Type": "application/json"
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else if (response.status === 404) {
+                        throw new Error("No URLs found for this user.");
+                    } else {
+                        throw new Error("Failed to fetch results. Please try again later.");
+                    }
+                })
+                .then(data => {
+                    displayResults(data);
+                })
+                .catch(error => {
+                    displayError(error.message);
+                });
+            });
+
+            function displayResults(results) {
+                let resultsContainer = document.querySelector('.results');
+                const errorContainer = document.querySelector('.message');
+
+                if (errorContainer) {
+                    errorContainer.remove();
+                }
+
+                if (!resultsContainer) {
+                    const newResultsContainer = document.createElement('div');
+                    newResultsContainer.classList.add('results');
+                    document.querySelector('.search').appendChild(newResultsContainer);
+                    resultsContainer = newResultsContainer;
+                }
+
+                const resultsList = document.createElement('ul');
+                results.forEach(result => {
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `
+                        <strong>Original URL:</strong> <a href="${result.originalUrl}" target="_blank">${result.originalUrl}</a><br>
+                        <strong>Short URL:</strong> <a href="${result.shortUrl}" target="_blank">${result.shortUrl}</a><br>
+                        <strong>Description:</strong> ${result.description}
+                    `;
+                    resultsList.appendChild(listItem);
+                });
+
+                resultsContainer.appendChild(resultsList);
+            }
+
+            function displayError(message) {
+                let errorContainer = document.querySelector('.message');
+                const resultsContainer = document.querySelector('.results');
+
+                if (resultsContainer) {
+                    resultsContainer.remove();
+                }
+
+                if (errorContainer) {
+                    errorContainer.innerHTML = `<h3>${message}</h3>`;
+                } else {
+                    const newErrorContainer = document.createElement('div');
+                    newErrorContainer.classList.add('message');
+                    newErrorContainer.innerHTML = `<h3>${message}</h3>`;
+                    document.querySelector('.search').appendChild(newErrorContainer);
+                }
+            }
         });
     </script>
 </head>
@@ -69,8 +113,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['urlName'], $_POST['au
 <body>
     <?php
     include "header.php";
-    renderNavbar()
-        ?>
+    renderNavbar();
+    ?>
     <div class="search">
         <h2>Search</h2>
         <form class="search-form" method="POST">
@@ -81,35 +125,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['urlName'], $_POST['au
             <input type="hidden" id="authToken" name="authToken">
             <button type="submit" class="cta-search">Search</button>
         </form>
-
-        <?php if ($error): ?>
-            <div class="message">
-                <h3><?php echo htmlspecialchars($error); ?></h3>
-            </div>
-        <?php endif; ?>
-
-        <?php if (!empty($results)): ?>
-            <h2>Search Results</h2>
-            <div class="results">
-                <ul>
-                    <?php foreach ($results as $result): ?>
-                        <li>
-                            <strong>Original URL:</strong> <a href="<?php echo htmlspecialchars($result['originalUrl']); ?>"
-                                target="_blank"><?php echo htmlspecialchars($result['originalUrl']); ?></a><br>
-                            <strong>Short URL:</strong> <a href="<?php echo htmlspecialchars($result['shortUrl']); ?>"
-                                target="_blank"><?php echo htmlspecialchars($result['shortUrl']); ?></a><br>
-                            <strong>Description:</strong> <?php echo htmlspecialchars($result['description']); ?>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-        <?php endif; ?>
     </div>
 
     <?php
     include "footer.php";
-    renderFooter()
-        ?>
+    renderFooter();
+    ?>
 </body>
 
 </html>

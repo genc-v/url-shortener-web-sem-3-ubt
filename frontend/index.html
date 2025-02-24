@@ -26,7 +26,7 @@
       }
 
       try {
-        const response = await fetch(`http://34.76.194.134:5284/${urlShort}`);
+        const response = await fetch(`http://localhost:5001/${urlShort}`);
 
         if (!response.ok) {
           throw new Error("Network response was not ok");

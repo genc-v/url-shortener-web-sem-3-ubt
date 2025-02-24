@@ -1,53 +1,3 @@
-<?php
-session_start();
-$error = '';
-$success = '';
-
-echo "<script>
-   
-    if (localStorage.getItem('authToken')) {
-        window.location.href = 'index.php'; 
-    }
-</script>";
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = $_POST['email'] ?? '';
-    $password = $_POST['password'] ?? '';
-
-    $url = "http://34.76.194.134:5284/api/User/login";
-
-    $data = json_encode(array(
-        "email" => $email,
-        "password" => $password
-    ));
-
-    $ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-
-    $response = curl_exec($ch);
-    $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
-
-    if ($http_code == 200) {
-
-        $success = 'Login succsesful!';
-
-        echo "<script>
-        window.location.href = 'index.php'; 
-        localStorage.setItem('authToken', '$response');
-        </script>";
-
-        exit;
-    } else {
-
-        $error = 'There was an error with the login process. Please try again.';
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -77,30 +27,79 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <div class="register">
-        <form class="register-form" id="registerForm" method="POST">
-            <h2 class="">Log in and start sharing</h2>
-            <p class="pt-6">Dont have an account? <a href="register.php" class="">Sign Up here!</a></p>
+        <form class="register-form" id="loginForm">
+            <h2>Log in and start sharing</h2>
+            <p class="pt-6">Don't have an account? <a href="register.php">Sign Up here!</a></p>
             <div class="form-group">
                 <label><b>Email</b></label>
-                <input type="text" name="email" placeholder="Email address" required>
+                <input type="text" id="email" placeholder="Email address" required>
             </div>
             <div class="form-group">
                 <label><b>Password</b></label>
-                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" id="password" placeholder="Password" required>
             </div>
-            <?php if ($error): ?>
-                <div class="message"><?php echo $error; ?></div>
-            <?php endif; ?>
-            <?php if ($success): ?>
-                <div class="message"><?php echo $success; ?></div>
-            <?php endif; ?>
-            <button type="submit" class="">Log In</button>
+            <div id="message" class="message"></div>
+            <button type="submit">Log In</button>
         </form>
     </div>
     <div class="secondary-container">
         <img src="assets/images/png/loginImage.png" alt="">
         <p>Power your links, QR Codes, and landing pages with Bytely's Connections Platform.</p>
     </div>
+
+    <script>
+        // Redirect if already logged in
+        if (localStorage.getItem('authToken')) {
+            window.location.href = 'index.html';  // Redirect to index.html instead of index.php
+        }
+
+        // Handle form submission
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const messageElement = document.getElementById('message');
+
+            // Validate input
+            if (!email || !password) {
+                messageElement.textContent = 'Please enter both email and password.';
+                messageElement.style.color = 'red';
+                return;
+            }
+
+            // Make the API request to login
+            const loginData = {
+                email: email,
+                password: password
+            };
+
+            fetch('http://localhost:5001/api/User/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(loginData)
+            })
+            .then(response=>response.text())
+            .then(data => {
+                if (data) {
+                    localStorage.setItem('authToken', data);
+                    messageElement.textContent = 'Login successful!';
+                    messageElement.style.color = 'green';
+                    window.location.href = 'index.php';  // Redirect to index.html after successful login
+                } else {
+                    messageElement.textContent = 'There was an error with the login process. Please try again.';
+                    messageElement.style.color = 'red';
+                }
+                }
+            )
+            .catch(() => {
+                messageElement.textContent = 'There was an error with the login process. Please try again.';
+                messageElement.style.color = 'red';
+            });
+        });
+    </script>
 </body>
 
 </html>

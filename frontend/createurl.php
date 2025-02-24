@@ -176,7 +176,7 @@
         const encodedDescription = encodeURIComponent(description);
 
         const response = await fetch(
-          `http://34.76.194.134:5284/api/URL?url=${encodedUrl}&token=${token}&description=${encodedDescription}`,
+          `http://localhost:5001/api/URL?url=${encodedUrl}&token=${token}&description=${encodedDescription}`,
           { method: 'POST' }
         );
 

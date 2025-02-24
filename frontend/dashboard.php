@@ -123,7 +123,7 @@
 
     const fetchUrls = async (page = 1, size = 10) => {
       try {
-        const response = await fetch(`http://34.76.194.134:5284/urls/${token}?pageNumber=${page}&pageSize=${size}`);
+        const response = await fetch(`http://localhost:5001/urls/${token}?pageNumber=${page}&pageSize=${size}`);
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
@@ -347,7 +347,7 @@
     const confirmDelete = async () => {
       if (deleteUrlId) {
         try {
-          const response = await fetch(`http://34.76.194.134:5284/api/Url/${deleteUrlId}`, {
+          const response = await fetch(`http://localhost:5001/api/Url/${deleteUrlId}`, {
             method: 'DELETE',
             headers: {
               'Authorization': `Bearer ${token}`,
@@ -382,7 +382,7 @@
       const newDescription = document.getElementById('edit-description-input').value;
       if (newDescription) {
         try {
-          const response = await fetch(`http://34.76.194.134:5284/api/Url/${window.editUrlId}?description=${encodeURIComponent(newDescription)}`, {
+          const response = await fetch(`http://localhost:5001/api/Url/${window.editUrlId}?description=${encodeURIComponent(newDescription)}`, {
             method: 'PUT',
             headers: {
               'accept': '*/*',

@@ -183,7 +183,7 @@
         } else {
             heroButtonContainer.innerHTML = ' <a href="register.php"><button class="buttonClear">Sign up for more</button ></a > ';
         }
-fetch('http://34.76.194.134:5284/api/User/login', {
+fetch('http://localhost:5001/api/User/login', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',

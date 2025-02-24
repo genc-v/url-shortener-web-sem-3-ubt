@@ -1,60 +1,3 @@
-<?php
-session_start();
-$error = '';
-$success = '';
-
-echo "<script>
-   
-    if (localStorage.getItem('authToken')) {
-        
-        window.location.href = 'dashboard.php'; 
-    }
-</script>";
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = $_POST['email'] ?? '';
-    $password = $_POST['password'] ?? '';
-    $fullName = $_POST['fullName'] ?? '';
-
-    $emailPattern = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
-    if (!preg_match($emailPattern, $email)) {
-        $error = "Invalid email format";
-    }
-
-    $passwordPattern = '/^(?=.*[A-Z])(?=.*\d)[A-Za-z\d!@#$%^&*()]{8,}$/';
-    if (empty($error) && !preg_match($passwordPattern, $password)) {
-        $error = "Password must be at least 8 characters, One uppercase letter and one number.";
-    }
-
-    if (empty($error)) {
-        $url = "http://34.76.194.134:5284/api/User/signup";
-        $data = json_encode(array(
-            "email" => $email,
-            "fullName" => $fullName,
-            "password" => $password
-        ));
-
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-
-        $response = curl_exec($ch);
-        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
-
-        if ($http_code == 200) {
-            $success = 'Registration successful! Redirecting to login.';
-            header("Location: login.php");
-            exit;
-        } else {
-            $error = 'Error during registration: ' . $response;
-        }
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -85,34 +28,90 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <div class="register">
 
-        <form class="register-form" id="registerForm" method="POST">
-            <h2 class="">Create your account</h2>
-            <p class="">Already have an account? <a href="login.php" class="">Login Here!</a></p>
+        <form class="register-form" id="registerForm">
+            <h2>Create your account</h2>
+            <p>Already have an account? <a href="login.php">Login Here!</a></p>
             <div class="form-group">
                 <label>Full Name</label>
-                <input type="text" name="fullName" placeholder="Your Full Name" required>
+                <input type="text" id="fullName" placeholder="Your Full Name" required>
             </div>
             <div class="form-group">
                 <label>Email</label>
-                <input type="text" name="email" placeholder="Email address" required>
+                <input type="text" id="email" placeholder="Email address" required>
             </div>
             <div class="form-group">
                 <label>Password</label>
-                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" id="password" placeholder="Password" required>
             </div>
-            <?php if ($error): ?>
-                <div class="message"><?php echo $error; ?></div>
-            <?php endif; ?>
-            <?php if ($success): ?>
-                <div class="message"><?php echo $success; ?></div>
-            <?php endif; ?>
-            <button type="submit" class="">Register</button>
+            <div id="message" class="message"></div>
+            <button type="submit">Register</button>
 
         </form>
     </div>
-    <div class="secondary-container"><img src="assets/images/png/RegisterImage.png" alt="">
+    <div class="secondary-container">
+        <img src="assets/images/png/RegisterImage.png" alt="">
         <p>Analyze your links and QR Codes as easily as creating them</p>
     </div>
+
+    <script>
+        // Redirect if already logged in
+        if (localStorage.getItem('authToken')) {
+            window.location.href = 'dashboard.php';
+        }
+
+        // Handle form submission
+        document.getElementById('registerForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const messageElement = document.getElementById('message');
+
+            // Validate input
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            const passwordPattern = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d!@#$%^&*()]{8,}$/;
+
+            if (!emailPattern.test(email)) {
+                messageElement.textContent = 'Invalid email format.';
+                messageElement.style.color = 'red';
+                return;
+            }
+
+            if (!passwordPattern.test(password)) {
+                messageElement.textContent = 'Password must be at least 8 characters, include one uppercase letter and one number.';
+                messageElement.style.color = 'red';
+                return;
+            }
+
+            // Prepare data for API request
+            const registrationData = {
+                email: email,
+                fullName: fullName,
+                password: password
+            };
+
+            // Make the API request to register
+            fetch('http://localhost:5001/api/User/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(registrationData)
+            })
+            .then(response => {
+                messageElement.textContent = 'Registration successful! Redirecting to login...';
+                messageElement.style.color = 'green';
+                setTimeout(() => {
+                    window.location.href = 'login.php';
+                }, 2000);
+            })
+            .catch(error => {
+                messageElement.textContent = 'An error occurred. Please try again later.';
+                messageElement.style.color = 'red';
+            });
+        });
+    </script>
 </body>
 
 </html>
