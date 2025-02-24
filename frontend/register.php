@@ -57,26 +57,91 @@
     </script>
 
     <div class="register">
-        <form class="register-form" id="registerForm" onsubmit="handleLogin(event)">
-            <h2 class="">Log in and start sharing</h2>
-            <p class="pt-6">Dont have an account? <a href="register.php" class="">Sign Up here!</a></p>
+
+        <form class="register-form" id="registerForm">
+            <h2>Create your account</h2>
+            <p>Already have an account? <a href="login.php">Login Here!</a></p>
             <div class="form-group">
-                <label><b>Email</b></label>
-                <input type="text" name="email" placeholder="Email address" required>
+                <label>Full Name</label>
+                <input type="text" id="fullName" placeholder="Your Full Name" required>
             </div>
             <div class="form-group">
-                <label><b>Password</b></label>
-                <input type="password" name="password" placeholder="Password" required>
+                <label>Email</label>
+                <input type="text" id="email" placeholder="Email address" required>
             </div>
-            <div class="message" id="error-message"></div>
-            <button type="submit" class="">Log In</button>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+            <div id="message" class="message"></div>
+            <button type="submit">Register</button>
+
         </form>
     </div>
     <div class="secondary-container">
-        <img src="assets/images/png/loginImage.png" alt="">
-        <p>Power your links, QR Codes, and landing pages with Bytely's Connections Platform.</p>
+        <img src="assets/images/png/RegisterImage.png" alt="">
+        <p>Analyze your links and QR Codes as easily as creating them</p>
     </div>
 
+    <script>
+        // Redirect if already logged in
+        if (localStorage.getItem('authToken')) {
+            window.location.href = 'dashboard.php';
+        }
+
+        // Handle form submission
+        document.getElementById('registerForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const messageElement = document.getElementById('message');
+
+            // Validate input
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            const passwordPattern = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d!@#$%^&*()]{8,}$/;
+
+            if (!emailPattern.test(email)) {
+                messageElement.textContent = 'Invalid email format.';
+                messageElement.style.color = 'red';
+                return;
+            }
+
+            if (!passwordPattern.test(password)) {
+                messageElement.textContent = 'Password must be at least 8 characters, include one uppercase letter and one number.';
+                messageElement.style.color = 'red';
+                return;
+            }
+
+            // Prepare data for API request
+            const registrationData = {
+                email: email,
+                fullName: fullName,
+                password: password
+            };
+
+            // Make the API request to register
+            fetch('http://localhost:5001/api/User/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(registrationData)
+            })
+            .then(response => {
+                messageElement.textContent = 'Registration successful! Redirecting to login...';
+                messageElement.style.color = 'green';
+                setTimeout(() => {
+                    window.location.href = 'login.php';
+                }, 2000);
+            })
+            .catch(error => {
+                messageElement.textContent = 'An error occurred. Please try again later.';
+                messageElement.style.color = 'red';
+            });
+        });
+    </script>
 </body>
 
 </html>

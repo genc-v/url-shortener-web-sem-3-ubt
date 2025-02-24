@@ -49,23 +49,19 @@
     </script>
 
     <div class="register">
-        <form class="register-form" id="registerForm" onsubmit="handleRegister(event)">
-            <h2>Sign Up</h2>
-            <p class="pt-6">Already have an account? <a href="login.html">Log in here!</a></p>
+        <form class="register-form" id="loginForm">
+            <h2>Log in and start sharing</h2>
+            <p class="pt-6">Don't have an account? <a href="register.php">Sign Up here!</a></p>
             <div class="form-group">
                 <label><b>Email</b></label>
-                <input type="email" name="email" placeholder="Email address" required>
+                <input type="text" id="email" placeholder="Email address" required>
             </div>
             <div class="form-group">
                 <label><b>Password</b></label>
-                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" id="password" placeholder="Password" required>
             </div>
-            <div class="form-group">
-                <label><b>Confirm Password</b></label>
-                <input type="password" name="confirm_password" placeholder="Confirm Password" required>
-            </div>
-            <div class="message" id="error-message"></div>
-            <button type="submit">Register</button>
+            <div id="message" class="message"></div>
+            <button type="submit">Log In</button>
         </form>
     </div>
     <div class="secondary-container">
@@ -73,6 +69,59 @@
         <p>Join Bytely and start shortening your links easily.</p>
     </div>
 
+    <script>
+        // Redirect if already logged in
+        if (localStorage.getItem('authToken')) {
+            window.location.href = 'index.html';  // Redirect to index.html instead of index.php
+        }
+
+        // Handle form submission
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const messageElement = document.getElementById('message');
+
+            // Validate input
+            if (!email || !password) {
+                messageElement.textContent = 'Please enter both email and password.';
+                messageElement.style.color = 'red';
+                return;
+            }
+
+            // Make the API request to login
+            const loginData = {
+                email: email,
+                password: password
+            };
+
+            fetch('http://localhost:5001/api/User/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(loginData)
+            })
+            .then(response=>response.text())
+            .then(data => {
+                if (data) {
+                    localStorage.setItem('authToken', data);
+                    messageElement.textContent = 'Login successful!';
+                    messageElement.style.color = 'green';
+                    window.location.href = 'index.php';  // Redirect to index.html after successful login
+                } else {
+                    messageElement.textContent = 'There was an error with the login process. Please try again.';
+                    messageElement.style.color = 'red';
+                }
+                }
+            )
+            .catch(() => {
+                messageElement.textContent = 'There was an error with the login process. Please try again.';
+                messageElement.style.color = 'red';
+            });
+        });
+    </script>
 </body>
 
 </html>

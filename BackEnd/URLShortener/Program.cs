@@ -60,13 +60,9 @@ builder.Services.AddCors(options =>
     });
 });
 
-
 builder.Services.AddDbContext<UrlShortenerDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
-
-
-
 
 // Dependency injection
 builder.Services.AddScoped<IUrlService, UrlService>();
