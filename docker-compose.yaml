@@ -8,26 +8,30 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    restart: always  # Ensures the container restarts on reboot
+
   frontend:
     build: ./frontend
     ports:
       - "3000:80"
     depends_on:
       - backend
-  db:
-      image: postgres:16
-      environment:
-        POSTGRES_DB: urlshort
-        POSTGRES_USER: urlshort
-        POSTGRES_PASSWORD: alskjdfa@alskdjfAAAb12
-      volumes:
-        - postgres-data:/var/lib/postgresql/data
-      healthcheck:
-        test: ["CMD-SHELL", "pg_isready -U urlshort"]
-        interval: 5s
-        timeout: 5s
-        retries: 5
+    restart: always  # Ensures the container restarts on reboot
 
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: urlshort
+      POSTGRES_USER: urlshort
+      POSTGRES_PASSWORD: alskjdfa@alskdjfAAAb12
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U urlshort"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: always  # Ensures the container restarts on reboot
 
 volumes:
   postgres-data:
